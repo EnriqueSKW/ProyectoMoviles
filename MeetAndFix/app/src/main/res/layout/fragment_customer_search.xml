@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.CustomerSearchFragment"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+
+    <EditText
+        android:id="@+id/txtSearchBarCliente"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/custom_input"
+        android:drawableLeft="@drawable/ic_gray_search"
+        android:drawablePadding="12dp"
+        android:ems="10"
+        android:fontFamily="sans-serif-medium"
+        android:hint="@string/buscarhint"
+        android:inputType="textLongMessage"
+        android:paddingLeft="12dp"
+        android:textColor="#000000"
+        android:textColorHint="#AAAAAA"
+        android:textSize="24sp"
+        android:drawableStart="@drawable/ic_gray_search"
+        android:paddingStart="12dp"
+        tools:ignore="RtlSymmetry"
+        android:autofillHints="" />
+
+    <Button
+        android:id="@+id/btnPrueba"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Prueba" />
+
+    <ListView
+        android:id="@+id/listviewSearch"
+        android:layout_width="match_parent"
+        android:layout_height="612dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp" />
+
+
+</LinearLayout>

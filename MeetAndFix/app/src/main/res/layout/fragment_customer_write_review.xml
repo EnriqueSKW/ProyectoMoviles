@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    tools:context=".fragments.CustomerWriteReviewFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/lblToolbarEscribirReseñaCliente"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:drawablePadding="12dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/escribir_rese_a"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:drawableStartCompat="@drawable/ic_white_pencil"
+            app:drawableLeftCompat="@drawable/ic_white_pencil" />
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/lbleEscribirReseñas_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/escribe_un_rese_a_de_este_negoico"
+                android:textColor="@color/colorBlack"
+                android:textSize="24sp" />
+
+
+            <EditText
+                android:id="@+id/txtEscribirReseñaCliente"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/custom_input"
+                android:ems="10"
+                android:hint="@string/escribe_algo"
+                android:inputType="textImeMultiLine"
+                android:gravity="start|top"
+                android:paddingRight="12dp"
+                android:paddingLeft="12dp"
+                android:textColor="#000000"
+                android:textColorHint="#AAAAAA"
+                android:textSize="18sp"
+                android:autofillHints=""
+                android:paddingStart="12dp" />
+
+            <TextView
+                android:id="@+id/lblPonerCalificación"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/tu_calificaci_n"
+                android:textColor="@color/colorGray"
+                android:textSize="18sp" />
+
+            <RatingBar
+                android:id="@+id/ratingBarEscribirCliente"
+                android:layout_width="245dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:rating="1"
+                android:scaleX=".9"
+                android:scaleY=".9"
+                android:stepSize="1"
+                android:theme="@style/RatingBar"
+                android:transformPivotX="0dp"
+                android:transformPivotY="0dp" />
+
+
+            <Button
+                android:id="@+id/btnPublicarReseñaCliente"
+                android:layout_width="220dp"
+                android:layout_height="37dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="100dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_round_button"
+                android:drawableStart="@drawable/ic_white_check"
+                android:drawableLeft="@drawable/ic_white_check"
+                android:drawablePadding="5dp"
+                android:paddingStart="20dp"
+                android:paddingLeft="20dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:text="@string/publicar"
+                android:textSize="18sp" />
+
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+</LinearLayout>

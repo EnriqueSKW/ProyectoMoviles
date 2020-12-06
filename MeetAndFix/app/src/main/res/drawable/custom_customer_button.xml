@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_enabled="true" android:state_pressed="true">
+        <layer-list>
+            <item android:drawable="@mipmap/customer_background"/>
+            <item>
+                <shape>
+                    <stroke android:width="10dp" android:color="#3F4756" />
+                    <corners android:radius="16dp"/>
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+    <item android:state_enabled="true">
+        <layer-list>
+            <item android:drawable="@mipmap/customer_background"/>
+            <item>
+                <shape>
+                    <stroke android:width="10dp" android:color="#62ACFF" />
+                    <corners android:radius="16dp"/>
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+</selector>

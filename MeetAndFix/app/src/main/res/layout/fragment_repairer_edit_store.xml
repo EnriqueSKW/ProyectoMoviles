@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.RepairerEditStoreFragment"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/lblToolbarEditarNegocioReparador"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:drawablePadding="12dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/editar_informaci_n"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:drawableLeftCompat="@drawable/ic_white_business"
+            app:drawableStartCompat="@drawable/ic_white_business" />
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/lblEditarInformacion_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/edita_la_informaci_n_de_tu_negocio"
+                android:textColor="@color/colorBlack"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/lblNombreNegocioEditar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/nombre_del_establecimiento"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp" />
+
+
+            <EditText
+                android:id="@+id/txtNombreNegocioEditar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:autofillHints=""
+                android:background="@drawable/custom_input"
+                android:ems="10"
+                android:hint="@string/escribe_algo"
+                android:inputType="textPersonName"
+                android:paddingStart="12dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="@string/valores_default"
+                android:textColor="#000000"
+                android:textColorHint="#AAAAAA"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/lblDireccionNegocioEditar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/direcci_n_completa_nn"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp" />
+
+
+            <EditText
+                android:id="@+id/txtDireccionNegocioEditar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:autofillHints=""
+                android:background="@drawable/custom_input"
+                android:ems="10"
+                android:hint="@string/escribe_algo"
+                android:inputType="textPersonName"
+                android:paddingStart="12dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="@string/valores_default"
+                android:textColor="#000000"
+                android:textColorHint="#AAAAAA"
+                android:textSize="18sp" />
+
+
+            <TextView
+                android:id="@+id/lblImagenesNegocioEditar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/imagenes"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp" />
+
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalscrollEditarGaleria"
+                android:layout_width="match_parent"
+                android:layout_height="151dp">
+            </HorizontalScrollView>
+
+            <Button
+                android:id="@+id/btnAñadirImagen"
+                android:layout_width="215dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="130dp"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_round_button"
+                android:drawableStart="@drawable/ic_camera_white"
+                android:drawableLeft="@drawable/ic_camera_white"
+                android:drawablePadding="5dp"
+                android:paddingStart="20dp"
+                android:paddingLeft="20dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:text="@string/agregar_imagen"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/btnGuardarCambiosNegocio"
+                android:layout_width="256dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_round_button"
+                android:drawableStart="@drawable/ic_white_check"
+                android:drawableLeft="@drawable/ic_white_check"
+                android:drawablePadding="5dp"
+                android:paddingStart="20dp"
+                android:paddingLeft="20dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:text="@string/guardar_cambios"
+                android:textSize="18sp" />
+
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+</LinearLayout>

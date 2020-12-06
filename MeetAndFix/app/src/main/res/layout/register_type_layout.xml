@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0278C7">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        tools:ignore="UselessParent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/lblRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:text="@string/registro"
+                android:textColor="#FFFFFF"
+                android:textSize="42sp" />
+
+            <TextView
+                android:id="@+id/lblRegistroSub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:text="@string/de_qu_forma_quieres_usar_meetfix"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/btnRegistroCliente"
+                android:layout_width="match_parent"
+                android:layout_height="205dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/custom_customer_button"
+                android:fontFamily="sans-serif-black"
+                android:text="@string/registrarme_como_cliente"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
+
+            <Button
+                android:id="@+id/btnRegistroReparador"
+                android:layout_width="match_parent"
+                android:layout_height="205dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/custom_repairer_button"
+                android:fontFamily="sans-serif-black"
+                android:text="@string/registrarme_como_reparador"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginStart="10dp" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

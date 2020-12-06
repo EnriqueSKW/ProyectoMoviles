@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_reparador_notificaciones"
+        android:title="@string/notificaciones"
+        android:icon="@drawable/ic_bell"
+        />
+
+    <item
+        android:id="@+id/menu_reparador_calendario"
+        android:icon="@drawable/ic_calendar"
+        android:title="@string/calendario"
+        />
+
+    <item
+        android:id="@+id/menu_reparador_negocio"
+        android:icon="@drawable/ic_white_business"
+        android:title="@string/negocioss"
+        />
+
+    <item
+        android:id="@+id/menu_reparador_perfil"
+        android:icon="@drawable/ic_user"
+        android:title="@string/perfil"
+        />
+
+</menu>

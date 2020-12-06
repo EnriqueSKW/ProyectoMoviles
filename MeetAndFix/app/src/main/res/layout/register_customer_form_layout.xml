@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0278C7">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/lblRegisterCustomer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:text="@string/llena_el_siguiente_fromulario_para_poder_registrarte_como_cliente"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgProfileCliente"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:contentDescription="@string/placeholder"
+                android:src="@mipmap/user_profile"
+                app:civ_border_color="#62ACFF"
+                app:civ_border_width="8dp" />
+
+            <Button
+                android:id="@+id/btnImgCliente"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginLeft="65dp"
+                android:layout_marginRight="65dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/custom_round_button"
+                android:drawableStart="@drawable/ic_camera_white"
+                android:drawableLeft="@drawable/ic_camera_white"
+                android:drawablePadding="1dp"
+                android:paddingStart="12dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:text="@string/elegir_imagen_de_perfil"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/lblNombreCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/nombre"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/txtNombreCliente"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/custom_input"
+                android:ems="10"
+                android:hint="@string/introduce_tu_nombre"
+                android:inputType="textPersonName"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:textColor="#000000"
+                android:textColorHint="#AAAAAA"
+                android:textSize="18sp"
+                android:paddingStart="12dp"
+                android:autofillHints="" />
+
+            <TextView
+                android:id="@+id/lblApellidosCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/apellidos"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/txtApellidosCliente"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/custom_input"
+                android:ems="10"
+                android:hint="@string/introduce_tus_apellidos"
+                android:inputType="textPersonName"
+                android:paddingRight="12dp"
+                android:paddingLeft="12dp"
+                android:textColor="#000000"
+                android:textColorHint="#AAAAAA"
+                android:textSize="18sp"
+                android:autofillHints=""
+                android:paddingStart="12dp" />
+
+            <TextView
+                android:id="@+id/lblCorreoCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/correo"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/txtCorreoCliente"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/custom_input"
+                android:ems="10"
+                android:hint="@string/alguien_ejemplo_com"
+                android:inputType="textEmailAddress"
+                android:paddingRight="12dp"
+                android:paddingLeft="12dp"
+                android:textColor="#000000"
+                android:textColorHint="#AAAAAA"
+                android:textSize="18sp"
+                android:autofillHints=""
+                android:paddingStart="12dp" />
+
+            <TextView
+                android:id="@+id/lblTelefonoCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/n_mero_de_tel_fono"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/txtTelefonoCliente"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/custom_input"
+                android:ems="10"
+                android:hint="@string/_000000000"
+                android:inputType="phone"
+                android:paddingRight="12dp"
+                android:paddingLeft="12dp"
+                android:textColor="#000000"
+                android:textColorHint="#AAAAAA"
+                android:textSize="18sp"
+                android:autofillHints=""
+                android:paddingStart="12dp" />
+
+            <TextView
+                android:id="@+id/lblDireccionCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/direcci_n_opcional"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/txtDireccionCliente"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/custom_input"
+                android:ems="10"
+                android:hint="@string/calle_n_mero_de_casa"
+                android:inputType="textLongMessage"
+                android:paddingRight="12dp"
+                android:paddingLeft="12dp"
+                android:textColor="#000000"
+                android:textColorHint="#AAAAAA"
+                android:textSize="18sp"
+                android:autofillHints=""
+                android:paddingStart="12dp" />
+
+            <TextView
+                android:id="@+id/lblContraseñaCliente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/contrase_a2"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/txtContraseñaCliente"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/custom_input"
+                android:ems="10"
+                android:hint="@string/dots"
+                android:inputType="textPassword"
+                android:paddingRight="12dp"
+                android:paddingLeft="12dp"
+                android:textColor="#000000"
+                android:textColorHint="#AAAAAA"
+                android:textSize="18sp"
+                android:paddingStart="12dp"
+                android:autofillHints="" />
+
+            <Button
+                android:id="@+id/btnSubmitCliente"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/custom_round_button"
+                android:text="@string/enviar"
+                android:textSize="18sp" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
