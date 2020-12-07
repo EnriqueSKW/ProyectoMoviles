@@ -22,9 +22,9 @@ class CustomerMainNavigationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.navigation_layout)
-        val ObjetoIntent : Intent = intent
+       /* val ObjetoIntent : Intent = intent
         var MiNombre = ObjetoIntent.getStringExtra("NombreUsuario".toString())
-        Toast.makeText(applicationContext,MiNombre, Toast.LENGTH_SHORT).show()
+        Toast.makeText(applicationContext,MiNombre, Toast.LENGTH_SHORT).show() */
         //Instanciamos los fragmentos
         val customerNotificationsFragment = CustomerNotificationsFragment()
         val customerCalendarFragment = CustomerCalendarFragment()

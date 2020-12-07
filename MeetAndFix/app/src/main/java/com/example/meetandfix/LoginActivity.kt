@@ -20,6 +20,10 @@ import java.io.*
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+
+
         setContentView(R.layout.login_layout)
 
         //Click en el botón de registrarse
@@ -30,7 +34,16 @@ class LoginActivity : AppCompatActivity() {
 
         //Click en el botón de entrar
         this.btnLogin.setOnClickListener {
-            this.LogInUsuario()
+
+            if(txtCorreo.text.toString() != "" && txtContraseña.text.toString() != "" )
+            {
+                this.LogInUsuario()
+            }
+                else
+            {
+                Toast.makeText(applicationContext,"no ha llenado los campos necesarios",Toast.LENGTH_SHORT).show()
+            }
+
 
         }
 
@@ -43,11 +56,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     //Abrir la activity de la navegación principal
-    private fun callNavigationActivity(Nombre: String){
+    private fun callNavigationActivity(){
 
 
         val intent =  Intent(this, CustomerMainNavigationActivity::class.java)
-        intent.putExtra("NombreUsuario", Nombre  )
+
         startActivity(intent)
 
     }
@@ -62,19 +75,28 @@ class LoginActivity : AppCompatActivity() {
 
             val arrayElementos = JSONArray(response)
             //validaciones
-
+            val sharedpref = object : shared(this.applicationContext){}
             var Respuesta = JSONObject(arrayElementos.getString(0))
             var Resultado:String = Respuesta.get("NombreUsuario").toString()
+            var resultado2:String = sharedpref.getNombreUsuario()
+                //Guardamos todos los datos en la clase de shared para tener las varibles de forma global
+
+                 sharedpref.setNombreUsuario(Resultado);
+                 sharedpref.setApellidosUsuario( Respuesta.get("ApellidoUsuario").toString());
+                 sharedpref.setCorreoUsuario( Respuesta.get("CorreoUsuario").toString());
+                 sharedpref.setTelefonoUsuario( Respuesta.get("TelefonoUsuario").toString());
+                 sharedpref.setIdUsuario( Respuesta.get("IdUsuario").toString());
+                 sharedpref.setDireccionUsuario( Respuesta.get("DireccionUsuario").toString());
+                 sharedpref.setImagenUsuario( Respuesta.get("ImagenUsuario").toString());
+
+            Toast.makeText(applicationContext, resultado2,Toast.LENGTH_SHORT).show()
+                    // mandamos a llamar el main activity de la app despues de guardar los datos
+                this.callNavigationActivity()
 
 
 
 
-                this.callNavigationActivity(Resultado)
 
-
-
-
-               // Toast.makeText(applicationContext,Resultado,Toast.LENGTH_SHORT).show()
 
            //Toast.makeText(applicationContext, response.toString() , Toast.LENGTH_SHORT).show()
         }, Response.ErrorListener { VolleyError ->
