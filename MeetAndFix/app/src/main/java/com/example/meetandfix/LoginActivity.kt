@@ -1,13 +1,21 @@
 package com.example.meetandfix
 
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.login_layout.*
+import android.util.Log
 import android.widget.Toast
-import com.android.volley.*
+import androidx.appcompat.app.AppCompatActivity
+import com.android.volley.AuthFailureError
+import com.android.volley.Request
+import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import kotlinx.android.synthetic.main.login_layout.*
+import org.json.JSONArray
+import org.json.JSONObject
+import java.io.*
+
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
         //Click en el botón de entrar
         this.btnLogin.setOnClickListener {
             this.LogInUsuario()
-            this.callNavigationActivity()
+
         }
 
     }
@@ -35,9 +43,13 @@ class LoginActivity : AppCompatActivity() {
     }
 
     //Abrir la activity de la navegación principal
-    private fun callNavigationActivity(){
+    private fun callNavigationActivity(Nombre: String){
+
+
         val intent =  Intent(this, CustomerMainNavigationActivity::class.java)
+        intent.putExtra("NombreUsuario", Nombre  )
         startActivity(intent)
+
     }
 
 
@@ -45,10 +57,26 @@ class LoginActivity : AppCompatActivity() {
     fun LogInUsuario(){
         val queue = Volley.newRequestQueue(this)
         val url2 = ConexionesURL.Login
-        val NombreUSuario = txtCorreo.text
         val request = object : StringRequest(Request.Method.POST, url2, Response.Listener<String> { response ->
-            Toast.makeText(applicationContext, NombreUSuario.toString() , Toast.LENGTH_SHORT).show()
-           // Toast.makeText(applicationContext, response.toString() , Toast.LENGTH_SHORT).show()
+
+
+            val arrayElementos = JSONArray(response)
+            //validaciones
+
+            var Respuesta = JSONObject(arrayElementos.getString(0))
+            var Resultado:String = Respuesta.get("NombreUsuario").toString()
+
+
+
+
+                this.callNavigationActivity(Resultado)
+
+
+
+
+               // Toast.makeText(applicationContext,Resultado,Toast.LENGTH_SHORT).show()
+
+           //Toast.makeText(applicationContext, response.toString() , Toast.LENGTH_SHORT).show()
         }, Response.ErrorListener { VolleyError ->
             Toast.makeText(applicationContext, VolleyError.toString(), Toast.LENGTH_LONG ).show()
         }){
@@ -56,8 +84,8 @@ class LoginActivity : AppCompatActivity() {
 
             override fun getParams(): MutableMap<String, String> {
                 val params = HashMap<String, String>()
-                //   params.put("nombre", usuario)
-            //    params.put("password",pass)
+                  params.put("nombre", txtCorreo.text.toString())
+                params.put("password",txtContraseña.text.toString())
                 return params
             }
 
@@ -67,4 +95,93 @@ class LoginActivity : AppCompatActivity() {
 
 
     }
+
+
+
+
+  /*   private fun saveTxtAction(){
+
+        //Obtenemos la información de los inputs
+       // val strFileName:String =  this.txtFileName.text.toString()
+       // val data:String =  this.txtAddSomeMessage.text.toString()
+
+        //Grabar el archivo de texto en storage local
+        val fileOutputStream: FileOutputStream
+
+        //importante usar try catch para manejo de errores
+        try {
+            fileOutputStream =  openFileOutput(strFileName, Context.MODE_PRIVATE)
+            fileOutputStream.write(data.toByteArray())
+        }
+        catch (e:FileNotFoundException){
+            this.showToast(getString(R.string.WarringErrorSaveFile))
+            Log.e("Error Save File",e.toString())
+        }
+        catch (e: Exception){
+            this.showToast(getString(R.string.WarringErrorSaveFile))
+            Log.e("Error Save File",e.toString())
+        }
+
+
+        this.showToast(getString(R.string.SuccessfulSaveFile))
+        this.cleanTxt()
+    }
+
+    private fun loadTxtAction(){
+
+        val strFileName:String =  this.txtFileName.text.toString()
+        val url = getFilesDir()
+        var file = File(url.toString()+ "/" + strFileName.toString())
+
+
+
+        if(file.exists()){
+
+            var fileInputStream: FileInputStream? =  null
+            fileInputStream =  openFileInput(strFileName)
+            var inputStream: InputStreamReader =  InputStreamReader(fileInputStream)
+            val bufferedReader: BufferedReader =  BufferedReader(inputStream)
+
+            val stringBuilder:StringBuilder =  StringBuilder()
+            var text:String? = null
+
+            while({text =  bufferedReader.readLine(); text}() != null){
+                stringBuilder.append(text)
+            }
+
+            this.txtAddSomeMessage.setText(stringBuilder.toString().toString())
+
+        }else{
+            this.showToast(getString(R.string.WarningMessageFileDoesNotExist))
+        }
+
+    }
+
+    private fun deleteTxtAction(){
+        val strFileName = this.txtFileName.text
+
+        val url = getFilesDir()
+        var file = File(url.toString()+ "/" + strFileName.toString())
+
+        if(file.exists()){
+            //EL ARCHIVO EXISTE
+            try {
+                file.delete()
+            }
+            catch (e: Exception){
+                this.showToast(getString(R.string.WarringErrorSaveFile))
+                Log.e("Error Save File",e.toString())
+            }
+        } else {
+            this.showToast(getString(R.string.WarningMessageFileDoesNotExist))
+        }
+    }
+    private fun showToast(text:CharSequence, duration:Int =  Toast.LENGTH_SHORT){
+        Toast.makeText(this,text,duration).show()
+    }
+
+*/
+
+
+
 }
