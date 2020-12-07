@@ -1,25 +1,57 @@
 package com.example.meetandfix
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.os.Build
 import android.os.Bundle
+import android.util.Base64.DEFAULT
+import android.util.Base64.encodeToString
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import kotlinx.android.synthetic.main.login_layout.*
 import kotlinx.android.synthetic.main.register_customer_form_layout.*
-import org.json.JSONArray
-import org.json.JSONObject
+import java.io.ByteArrayOutputStream
+import java.io.FileInputStream
+import java.io.IOException
+import java.io.InputStream
+import java.util.*
+import kotlin.collections.HashMap
+
 
 class RegisterCustomerActivity : Activity() {
+    var imagen = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register_customer_form_layout)
 
-
+        this.btnImgCliente.setOnClickListener{
+            //check runtime permission
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) ==
+                    PackageManager.PERMISSION_DENIED){
+                    //permission denied
+                    val permissions = arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE);
+                    //show popup to request runtime permission
+                    requestPermissions(permissions, PERMISSION_CODE);
+                }
+                else{
+                    //permission already granted
+                    pickImageFromGallery();
+                }
+            }
+            else{
+                //system OS is < Marshmallow
+                pickImageFromGallery();
+            }
+        }
 
         this.btnSubmitCliente.setOnClickListener {
             this.RegistrarUsuario()
@@ -36,43 +68,47 @@ class RegisterCustomerActivity : Activity() {
         val Direccion = txtDireccionCliente.text.toString()
         val Password = txtContraseñaCliente.text.toString()
         val Correo = txtCorreoCliente.text.toString()
-        val imagen = "base64/type=png"
 
 
-         Toast.makeText(applicationContext,Nombre + Apellidos + Telefono + Direccion + Password + Correo + imagen,Toast.LENGTH_LONG).show()
 
 
-        val queue = Volley.newRequestQueue(this)
-        val url2 = ConexionesURL.Registro
-        val request = object : StringRequest(Request.Method.POST, url2, Response.Listener<String> { response ->
+        if(Nombre != "" && Apellidos != "" && imagen != "" && Telefono != "" && Direccion != "" && Password != "" && Correo != "" )
+            {
+                val queue = Volley.newRequestQueue(this)
+                val url2 = ConexionesURL.Registro
+                val request = object : StringRequest(Request.Method.POST, url2, Response.Listener<String> { response ->
+                    Toast.makeText(applicationContext, "Se registro Correctamente" , Toast.LENGTH_SHORT).show()
+                    this.RegresarLogin()
 
-            this.RegresarLogin()
+                }, Response.ErrorListener { VolleyError ->
+                    Toast.makeText(applicationContext, VolleyError.toString(), Toast.LENGTH_LONG ).show()
+                }){
+                    @Throws(AuthFailureError::class)
 
+                    override fun getParams(): MutableMap<String, String> {
+                        val params = HashMap<String, String>()
+                        params.put("Correo",Correo)
+                        params.put("Password", Password)
+                        params.put("Nombre", Nombre)
+                        params.put("Apellido",Apellidos)
+                        params.put("Telefono", Telefono)
+                        params.put("Direccion",Direccion)
+                        params.put("Imagen", imagen)
 
-            // Toast.makeText(applicationContext,Resultado,Toast.LENGTH_SHORT).show()
+                        return params
+                    }
 
-            //Toast.makeText(applicationContext, response.toString() , Toast.LENGTH_SHORT).show()
-        }, Response.ErrorListener { VolleyError ->
-            Toast.makeText(applicationContext, VolleyError.toString(), Toast.LENGTH_LONG ).show()
-        }){
-            @Throws(AuthFailureError::class)
+                }
 
-            override fun getParams(): MutableMap<String, String> {
-                val params = HashMap<String, String>()
-                params.put("Correo",Correo)
-                params.put("Password", Password)
-                params.put("Nombre", Nombre)
-                params.put("Apellido",Apellidos)
-                params.put("Telefono", Telefono)
-                params.put("Direccion",Direccion)
-                params.put("Imagen", imagen)
-
-                return params
+                queue.add(request)
             }
-
+        else
+        {
+            Toast.makeText(applicationContext,"Asegurese de llenar todos los campos",Toast.LENGTH_SHORT).show()
+            return
         }
 
-        queue.add(request)
+
 
 
     }
@@ -86,6 +122,54 @@ class RegisterCustomerActivity : Activity() {
     }
 
 
+
+    private fun pickImageFromGallery() {
+        //Intent to pick image
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/PNG"
+        startActivityForResult(intent, IMAGE_PICK_CODE)
+    }
+
+    companion object {
+        //image pick code
+        private val IMAGE_PICK_CODE = 1000;
+        //Permission code
+        private val PERMISSION_CODE = 1001;
+    }
+
+    //handle requested permission result
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        when(requestCode){
+            PERMISSION_CODE -> {
+                if (grantResults.size >0 && grantResults[0] ==
+                    PackageManager.PERMISSION_GRANTED){
+                    //permission from popup granted
+                    pickImageFromGallery()
+                }
+                else{
+                    //permission from popup denied
+                    Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    //handle result of picked image
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE){
+            imgProfileCliente.setImageURI(data?.data)
+
+            val bitmap = (this.imgProfileCliente.drawable as BitmapDrawable).bitmap
+            val stream = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.JPEG,90,stream)
+
+            var ArregloByte:ByteArray? = stream.toByteArray()
+          imagen =  Base64.getEncoder().encodeToString(ArregloByte) //esta es la variable que mandaras en el request como foto
+
+
+        }
+    }
 
 
 }
