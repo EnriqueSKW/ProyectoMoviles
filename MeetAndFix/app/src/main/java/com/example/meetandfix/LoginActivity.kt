@@ -72,26 +72,33 @@ class LoginActivity : AppCompatActivity() {
         val url2 = ConexionesURL.Login
         val request = object : StringRequest(Request.Method.POST, url2, Response.Listener<String> { response ->
 
-
             val arrayElementos = JSONArray(response)
             //validaciones
-            val sharedpref = object : shared(this.applicationContext){}
-            var Respuesta = JSONObject(arrayElementos.getString(0))
-            var Resultado:String = Respuesta.get("NombreUsuario").toString()
-            var resultado2:String = sharedpref.getNombreUsuario()
+
+            if(arrayElementos.length() > 0 )
+            {
+                val sharedpref = object : shared(this.applicationContext){}
+                var Respuesta = JSONObject(arrayElementos.getString(0))
+                var resultado2:String = sharedpref.getNombreUsuario()
+                var Resultado:String = Respuesta.get("NombreUsuario").toString()
                 //Guardamos todos los datos en la clase de shared para tener las varibles de forma global
 
-                 sharedpref.setNombreUsuario(Resultado);
-                 sharedpref.setApellidosUsuario( Respuesta.get("ApellidoUsuario").toString());
-                 sharedpref.setCorreoUsuario( Respuesta.get("CorreoUsuario").toString());
-                 sharedpref.setTelefonoUsuario( Respuesta.get("TelefonoUsuario").toString());
-                 sharedpref.setIdUsuario( Respuesta.get("IdUsuario").toString());
-                 sharedpref.setDireccionUsuario( Respuesta.get("DireccionUsuario").toString());
-                 sharedpref.setImagenUsuario( Respuesta.get("ImagenUsuario").toString());
+                sharedpref.setNombreUsuario(Resultado);
+                sharedpref.setApellidosUsuario( Respuesta.get("ApellidoUsuario").toString());
+                sharedpref.setCorreoUsuario( Respuesta.get("CorreoUsuario").toString());
+                sharedpref.setTelefonoUsuario( Respuesta.get("TelefonoUsuario").toString());
+                sharedpref.setIdUsuario( Respuesta.get("IdUsuario").toString());
+                sharedpref.setDireccionUsuario( Respuesta.get("DireccionUsuario").toString());
+                sharedpref.setImagenUsuario( Respuesta.get("ImagenUsuario").toString());
 
-            Toast.makeText(applicationContext, resultado2,Toast.LENGTH_SHORT).show()
-                    // mandamos a llamar el main activity de la app despues de guardar los datos
+                Toast.makeText(applicationContext, resultado2,Toast.LENGTH_SHORT).show()
+                // mandamos a llamar el main activity de la app despues de guardar los datos
                 this.callNavigationActivity()
+            }
+            else
+            {
+                Toast.makeText(applicationContext, "Usuario no existe, Correo y/o contraseña incorrectos",Toast.LENGTH_SHORT).show()
+            }
 
 
 
@@ -106,7 +113,7 @@ class LoginActivity : AppCompatActivity() {
 
             override fun getParams(): MutableMap<String, String> {
                 val params = HashMap<String, String>()
-                  params.put("nombre", txtCorreo.text.toString())
+                params.put("nombre", txtCorreo.text.toString())
                 params.put("password",txtContraseña.text.toString())
                 return params
             }
