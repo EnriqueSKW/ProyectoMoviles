@@ -14,6 +14,7 @@ class CustomerStoreFragment : Fragment() {
     //instanciar los fragmentos
     private val customerReviewsFragment = CustomerReviewsFragment()
     private val customerScheduleFragment = CustomerScheduleFragment()
+    private val customerChatFragment = ChatFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +42,11 @@ class CustomerStoreFragment : Fragment() {
         //ir al fragmento de agendar cita
         this.btnAgendarCliente.setOnClickListener {
             nextFragment(customerScheduleFragment)
+        }
+
+        //ir al fragmento del chat
+        this.btnEnviarMensajeCliente.setOnClickListener {
+            nextFragment(customerChatFragment)
         }
 
 

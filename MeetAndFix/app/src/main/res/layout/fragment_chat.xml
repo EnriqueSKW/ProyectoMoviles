@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    tools:context=".fragments.ChatFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/lblToolbarEscribirReseñaCliente"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:drawablePadding="12dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@string/chat"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:drawableLeftCompat="@drawable/ic_message" />
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="576dp"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/CardMessaje"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@color/colorWhite"
+                card_view:cardBackgroundColor="@color/colorWhite"
+                card_view:cardCornerRadius="6dp">
+
+
+                <TextView
+                    android:id="@+id/lblMensajeUsuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@color/colorPrimary"
+                    android:fontFamily="sans-serif-medium"
+                    android:padding="10dp"
+                    android:text="@string/nombre_del_emisor"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp" />
+
+
+                <TextView
+                    android:id="@+id/lblMensajeContenido"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@color/colorWhite"
+                    android:fontFamily="sans-serif-medium"
+                    android:padding="10dp"
+                    android:text="@string/mensaje"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/lblMensajeFecha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="140dp"
+                    android:layout_marginLeft="140dp"
+                    android:layout_marginTop="100dp"
+                    android:background="@color/colorWhite"
+                    android:fontFamily="sans-serif-medium"
+                    android:padding="10dp"
+                    android:text="@string/fecha_de_envio"
+                    android:textColor="@color/colorGray"
+                    android:textSize="12sp" />
+
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="92dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/txtEscribirMensaje"
+                    android:layout_width="221dp"
+                    android:layout_height="82dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:autofillHints=""
+                    android:background="@drawable/custom_input"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="@string/escribe_un_mensaje"
+                    android:inputType="textImeMultiLine"
+                    android:paddingStart="12dp"
+                    android:paddingLeft="12dp"
+                    android:paddingRight="12dp"
+                    android:textColor="#000000"
+                    android:textColorHint="#AAAAAA"
+                    android:textSize="18sp" />
+
+
+                <Button
+                    android:id="@+id/btnEnviarMensaje"
+                    android:layout_width="0dp"
+                    android:layout_height="53dp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_round_button"
+                    android:drawableStart="@drawable/ic_send"
+                    android:drawableLeft="@drawable/ic_send"
+                    android:drawablePadding="5dp"
+                    android:paddingStart="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingEnd="0dp"
+                    android:paddingRight="0dp"
+                    android:text="@string/enviar"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</LinearLayout>

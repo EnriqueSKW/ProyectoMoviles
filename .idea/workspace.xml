@@ -19,6 +19,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/MeetAndFix" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -34,9 +35,17 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="580" y="184" key="FileChooserDialogImpl" timestamp="1607293920997">
+    <state x="392" y="88" key="#Notifications" timestamp="1607376202879">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="580" y="184" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1607293920997" />
+    <state x="392" y="88" key="#Notifications/0.0.1600.860@0.0.1600.860" timestamp="1607376202879" />
+    <state x="580" y="184" key="FileChooserDialogImpl" timestamp="1607376219416">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="580" y="184" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1607376219416" />
+    <state x="301" y="72" key="SettingsEditor" timestamp="1607376194018">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="301" y="72" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1607376194018" />
   </component>
 </project>

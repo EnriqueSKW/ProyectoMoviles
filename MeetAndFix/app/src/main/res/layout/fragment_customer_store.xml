@@ -166,7 +166,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="99dp"
+            android:layout_height="64dp"
             android:orientation="horizontal">
 
             <Button
@@ -185,8 +185,8 @@
                 android:drawablePadding="5dp"
                 android:paddingStart="20dp"
                 android:paddingLeft="20dp"
-                android:paddingRight="0dp"
                 android:paddingEnd="0dp"
+                android:paddingRight="0dp"
                 android:text="@string/ver_rese_as"
                 android:textSize="14sp" />
 
@@ -211,6 +211,27 @@
                 android:text="@string/agendar_cita"
                 android:textSize="14sp" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btnEnviarMensajeCliente"
+            android:layout_width="193dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_round_button"
+            android:drawableStart="@drawable/ic_send"
+            android:drawableLeft="@drawable/ic_send"
+            android:drawablePadding="5dp"
+            android:paddingStart="20dp"
+            android:paddingLeft="20dp"
+            android:paddingEnd="0dp"
+            android:paddingRight="0dp"
+            android:text="Enviar mensaje"
+            android:textSize="14sp" />
 
 
     </LinearLayout>

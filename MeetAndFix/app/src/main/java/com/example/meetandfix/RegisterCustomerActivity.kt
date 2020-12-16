@@ -72,7 +72,7 @@ class RegisterCustomerActivity : Activity() {
 
 
 
-        if(Nombre != "" && Apellidos != "" && imagen != "" && Telefono != "" && Direccion != "" && Password != "" && Correo != "" )
+        if(Nombre != "" && Apellidos != "" && imagen != "" && Telefono != "" && Password != "" && Correo != "" )
             {
                 val queue = Volley.newRequestQueue(this)
                 val url2 = ConexionesURL.Registro

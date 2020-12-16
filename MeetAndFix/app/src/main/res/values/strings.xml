@@ -84,6 +84,11 @@
     <string name="imagenes">Imagenes</string>
     <string name="agregar_imagen">Agregar imagen</string>
     <string name="guardar_cambios">Guardar cambios</string>
+    <string name="chat">Chat</string>
+    <string name="nombre_del_emisor">Nombre del emisor</string>
+    <string name="mensaje">Mensaje</string>
+    <string name="fecha_de_envio">Fecha de envio</string>
+    <string name="escribe_un_mensaje">Escribe un mensaje</string>
     <string-array name="filter_array">
         <item>Nombre</item>
         <item>Dirección</item>

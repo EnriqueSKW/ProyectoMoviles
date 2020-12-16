@@ -84,12 +84,16 @@ class LoginActivity : AppCompatActivity() {
                 //Guardamos todos los datos en la clase de shared para tener las varibles de forma global
 
                 sharedpref.setNombreUsuario(Resultado);
+                sharedpref.setIdUsuario( Respuesta.get("IdUsuario").toString());
                 sharedpref.setApellidosUsuario( Respuesta.get("ApellidoUsuario").toString());
                 sharedpref.setCorreoUsuario( Respuesta.get("CorreoUsuario").toString());
                 sharedpref.setTelefonoUsuario( Respuesta.get("TelefonoUsuario").toString());
                 sharedpref.setIdUsuario( Respuesta.get("IdUsuario").toString());
                 sharedpref.setDireccionUsuario( Respuesta.get("DireccionUsuario").toString());
                 sharedpref.setImagenUsuario( Respuesta.get("ImagenUsuario").toString());
+                sharedpref.setPassword( Respuesta.get("PasswordUsuario").toString());
+
+                resultado2 = sharedpref.getNombreUsuario()
 
                 Toast.makeText(applicationContext, resultado2,Toast.LENGTH_SHORT).show()
                 // mandamos a llamar el main activity de la app despues de guardar los datos
