@@ -75,7 +75,7 @@ class LoginActivity : AppCompatActivity() {
             val arrayElementos = JSONArray(response)
             //validaciones
 
-            if(arrayElementos.length() > 0 )
+            if(arrayElementos.length() > 0 || arrayElementos.length() != null)
             {
                 val sharedpref = object : shared(this.applicationContext){}
                 var Respuesta = JSONObject(arrayElementos.getString(0))

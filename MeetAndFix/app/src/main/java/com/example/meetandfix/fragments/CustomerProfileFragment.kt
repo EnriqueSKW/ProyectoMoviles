@@ -28,6 +28,11 @@ import kotlinx.android.synthetic.main.fragment_customer_profile.*
 import kotlinx.android.synthetic.main.register_customer_form_layout.*
 import java.io.ByteArrayOutputStream
 import java.util.*
+import android.Manifest
+import kotlinx.android.synthetic.main.register_customer_form_layout.*
+
+import kotlin.collections.HashMap
+
 class CustomerProfileFragment : Fragment() {
 
     var imagen = ""
@@ -41,6 +46,9 @@ class CustomerProfileFragment : Fragment() {
 
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_customer_profile, container, false)
+
+
+
     }
 
     // Aqui se tienen que poner el codigo una vez que se instancia el fragment
@@ -75,35 +83,38 @@ class CustomerProfileFragment : Fragment() {
         this.btnSubmitClienteEdit.setOnClickListener {
             ModificarUsuario()
         }
-
     }
 
-    //Funcion para modificar los datos del usuario
-    private fun ModificarUsuario()
+
+
+    fun ModificarUsuario()
     {
+        
+        val sharedpref = object : shared(this.context){}
         val Nombre = txtNombreClienteEdit.text.toString()
         val Apellidos = txtApellidosClienteEdit.text.toString()
         val Telefono = txtTelefonoClienteEdit.text.toString()
         val Direccion = txtDireccionClienteEdit.text.toString()
         val Password = txtContraseñaClienteEdit.text.toString()
-        val Correo = txtCorreoCliente.text.toString()
 
-        if(Nombre != "" && Apellidos != "" && Telefono != "" && Password != "" && Correo != "" )
+
+
+        if(Nombre != "" && Apellidos != "" && imagen != "" && Telefono != "" && Password != ""  )
         {
-            val queue = Volley.newRequestQueue(getActivity()?.getApplicationContext())
-            val url2 = ConexionesURL.ModificarUsuario
-            val request = object : StringRequest(Request.Method.POST, url2, Response.Listener<String> { response ->
-                Toast.makeText(getActivity()?.getApplicationContext(), "Se modificaron los datos correctamente" , Toast.LENGTH_SHORT).show()
+            val queue = Volley.newRequestQueue(this.context)
+            val url = ConexionesURL.ModificarUsuario
+            val request = object : StringRequest(Request.Method.POST, url, Response.Listener<String> { response ->
+                Toast.makeText(this.context, "Se registro Correctamente" , Toast.LENGTH_SHORT).show()
+              
 
             }, Response.ErrorListener { VolleyError ->
-                Toast.makeText(getActivity()?.getApplicationContext(), VolleyError.toString(), Toast.LENGTH_LONG ).show()
+                Toast.makeText(this.context, VolleyError.toString(), Toast.LENGTH_LONG ).show()
             }){
                 @Throws(AuthFailureError::class)
 
                 override fun getParams(): MutableMap<String, String> {
                     val params = HashMap<String, String>()
-                    params.put("IdUsuario",Idglobal)
-                    params.put("Correo",Correo)
+                    params.put("IdUsuario",sharedpref.getIdUsuario())
                     params.put("Password", Password)
                     params.put("Nombre", Nombre)
                     params.put("Apellido",Apellidos)
@@ -120,12 +131,14 @@ class CustomerProfileFragment : Fragment() {
         }
         else
         {
-            Toast.makeText(getActivity()?.getApplicationContext(),"Los campos no pueden estar vacios",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this.context,"Asegurese de llenar todos los campos",Toast.LENGTH_SHORT).show()
             return
         }
 
-    }
 
+
+
+    }
 
 
 
