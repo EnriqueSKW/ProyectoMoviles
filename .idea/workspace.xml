@@ -13,10 +13,10 @@
   <component name="ProjectId" id="1lFRE9e6pF8r1ozvtGZgH0hazz2" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/MeetAndFix" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
@@ -39,10 +39,15 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="392" y="88" key="#Notifications/0.0.1600.860@0.0.1600.860" timestamp="1607376202879" />
-    <state x="580" y="184" key="FileChooserDialogImpl" timestamp="1607376219416">
-      <screen x="0" y="0" width="1600" height="860" />
+    <state x="339" y="90" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1610660959375">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="339" y="90" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1610660959375" />
+    <state x="696" y="223" key="FileChooserDialogImpl" timestamp="1610660989682">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="580" y="184" key="FileChooserDialogImpl/0.0.1600.860@0.0.1600.860" timestamp="1607376219416" />
+    <state x="696" y="223" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1610660989682" />
     <state x="301" y="72" key="SettingsEditor" timestamp="1607376194018">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
