@@ -1,18 +1,21 @@
 package com.example.meetandfix.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import com.example.meetandfix.R
+import com.example.meetandfix.fragments.SearchAdapter.ShopAdapter
+import com.example.meetandfix.fragments.SearchAdapter.ShopModel
 import kotlinx.android.synthetic.main.fragment_customer_search.*
 
-class CustomerSearchFragment : Fragment() {
+class CustomerSearchFragment : Fragment(),ShopAdapter.ClickListener {
 
     //instancial los fragmentos
     private val customerStoreFragment = CustomerStoreFragment()
-
+    var bundle = Bundle()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,12 +35,17 @@ class CustomerSearchFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        val recycler= view?.findViewById<RecyclerView>(R.id.Search_RecyclerID)
+        recycler?.adapter = ShopAdapter(listOf(
+            ShopModel(0,"Store1","direccion1","https://loremflickr.com/320/240"),
+            ShopModel(0,"Store2","direccion2","https://loremflickr.com/320/240"),
+            ShopModel(0,"Store3","direccion3","https://loremflickr.com/320/240"),
+            ShopModel(0,"Store4","direccion4","https://loremflickr.com/320/240"),
+            ShopModel(0,"Store5","direccion5","https://loremflickr.com/320/240"),
+            ShopModel(0,"Store6","direccion6","https://loremflickr.com/320/240")
+
+        ),this)
         //ir al fragment de la vista del negocio
-        this.btnPrueba.setOnClickListener {
-            nextFragment(customerStoreFragment)
-        }
-
-
     }
 
     companion object {
@@ -55,5 +63,13 @@ class CustomerSearchFragment : Fragment() {
             replace(R.id.fl_wrapper, fragment)
             val commit = commit()
         }
+
+    override fun ClickedItem(shop: ShopModel) {
+        bundle.putString("nombre", shop.nombre);
+        bundle.putString("direccion", shop.direccion);
+
+        customerStoreFragment.arguments=bundle;
+        nextFragment(customerStoreFragment)
+    }
 
 }

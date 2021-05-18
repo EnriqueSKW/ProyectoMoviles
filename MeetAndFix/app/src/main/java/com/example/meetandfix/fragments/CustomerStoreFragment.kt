@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.example.meetandfix.R
 import kotlinx.android.synthetic.main.fragment_customer_store.*
 
@@ -15,6 +16,8 @@ class CustomerStoreFragment : Fragment() {
     private val customerReviewsFragment = CustomerReviewsFragment()
     private val customerScheduleFragment = CustomerScheduleFragment()
     private val customerChatFragment = ChatFragment()
+    var getNombre: String? = ""
+    var getDireccion: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,13 +29,22 @@ class CustomerStoreFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_customer_store, container, false)
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         // super.onCreate(savedInstanceState)
-
+        getNombre = arguments?.getString("nombre")
+        getDireccion = arguments?.getString("direccion")
+        val Nombre = view?.findViewById<TextView>(R.id.lblNegocioNombreCliente)
+        val Direccion = view?.findViewById<TextView>(R.id.lblDireccionRealCliente)
+        if (Nombre != null && Direccion!=null) {
+            Nombre.setText(getNombre);
+            Direccion.setText(getDireccion);
+        };
 
         //ir al fragmento de reseñas
         this.btnVerResñasCliente.setOnClickListener {

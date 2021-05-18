@@ -22,6 +22,7 @@ import android.Manifest
 
 class RegisterRepairerActivity : Activity() {
     var imagen = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.register_repairer_form_layout)

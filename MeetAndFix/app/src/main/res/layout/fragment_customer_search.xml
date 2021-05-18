@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.CustomerSearchFragment"
     android:background="#FFFFFF"
     android:orientation="vertical">
@@ -30,21 +31,14 @@
         android:drawableStart="@drawable/ic_gray_search"
         android:paddingStart="12dp"
         tools:ignore="RtlSymmetry"
-        android:autofillHints="" />
+        />
 
-    <Button
-        android:id="@+id/btnPrueba"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/Search_RecyclerID"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Prueba" />
-
-    <ListView
-        android:id="@+id/listviewSearch"
-        android:layout_width="match_parent"
-        android:layout_height="612dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp" />
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/custom_list" />
 
 
 </LinearLayout>

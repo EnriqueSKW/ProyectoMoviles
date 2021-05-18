@@ -34,15 +34,15 @@ class LoginActivity : AppCompatActivity() {
 
         //Click en el botón de entrar
         this.btnLogin.setOnClickListener {
-
-            if(txtCorreo.text.toString() != "" && txtContraseña.text.toString() != "" )
-            {
-                this.LogInUsuario()
-            }
-                else
+            this.callNavigationActivity()
+           // if(txtCorreo.text.toString() != "" && txtContraseña.text.toString() != "" )
+           // {
+                //this.LogInUsuario()
+           // }
+              /*  else
             {
                 Toast.makeText(applicationContext,"no ha llenado los campos necesarios",Toast.LENGTH_SHORT).show()
-            }
+            }*/
 
 
         }

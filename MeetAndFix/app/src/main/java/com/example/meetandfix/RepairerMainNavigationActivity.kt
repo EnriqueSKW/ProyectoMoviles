@@ -7,6 +7,7 @@ import com.example.meetandfix.fragments.*
 import kotlinx.android.synthetic.main.navigation_repairer_layout.*
 
 class RepairerMainNavigationActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.navigation_repairer_layout)
