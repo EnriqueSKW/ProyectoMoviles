@@ -1,4 +1,4 @@
-package com.example.meetandfix.fragments.SearchAdapter;
+package com.example.meetandfix.SearchAdapter;
 
 public class ShopModel {
     private int Id;

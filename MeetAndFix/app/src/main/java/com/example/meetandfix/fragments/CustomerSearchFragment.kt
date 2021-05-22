@@ -7,9 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.meetandfix.R
-import com.example.meetandfix.fragments.SearchAdapter.ShopAdapter
-import com.example.meetandfix.fragments.SearchAdapter.ShopModel
-import kotlinx.android.synthetic.main.fragment_customer_search.*
+import com.example.meetandfix.SearchAdapter.ShopAdapter
+import com.example.meetandfix.SearchAdapter.ShopModel
 
 class CustomerSearchFragment : Fragment(),ShopAdapter.ClickListener {
 

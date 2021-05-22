@@ -1,4 +1,4 @@
-package com.example.meetandfix.fragments.SearchAdapter
+package com.example.meetandfix.SearchAdapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.meetandfix.NotificationAdapter.NotifModel
 import com.example.meetandfix.R
 
 class ShopAdapter(val shops: List<ShopModel>, private var clickListener: ClickListener ): RecyclerView.Adapter<ShopAdapter.ViewHolder>() {

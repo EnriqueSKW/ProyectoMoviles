@@ -1,9 +1,7 @@
 package com.example.meetandfix
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.AuthFailureError
@@ -11,6 +9,8 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.meetandfix.SQLite.DataBaseHandler
+import com.example.meetandfix.UserModel.UserModel
 import kotlinx.android.synthetic.main.login_layout.*
 import org.json.JSONArray
 import org.json.JSONObject
@@ -20,7 +20,6 @@ import java.io.*
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
 
 
@@ -34,7 +33,18 @@ class LoginActivity : AppCompatActivity() {
 
         //Click en el botón de entrar
         this.btnLogin.setOnClickListener {
-            this.callNavigationActivity()
+
+            val context= this
+            var helper = DataBaseHandler(context)
+            var db = helper.readableDatabase
+            var ra = db.rawQuery("Select * from Usuario",null)
+
+            if (ra.count==0&&txtCorreo.text.length>0&&txtContraseña.text.length>0)
+            {
+                helper.InsertData(UserModel(txtCorreo.toString(),txtContraseña.toString()))
+
+            }
+           this.callNavigationActivity()
            // if(txtCorreo.text.toString() != "" && txtContraseña.text.toString() != "" )
            // {
                 //this.LogInUsuario()
@@ -47,8 +57,31 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
+
     }
 
+    override fun onResume() {
+        super.onResume()
+        getDataLogin()
+    }
+
+    private fun getDataLogin(){
+        val context= this
+        var helper = DataBaseHandler(context)
+        var db = helper.readableDatabase
+        var ra = db.rawQuery("Select * from Usuario",null)
+        val List:MutableList<UserModel> = ArrayList()
+
+        if(ra.moveToFirst())
+        {
+            do{
+                List.add(UserModel(ra.getString(1),ra.getString(2)))
+            }while(ra.moveToNext())
+
+            txtCorreo.setText(List[0].correo)
+            txtContraseña.setText(List[0].contraseña)
+        }
+    }
     //Abrir la activity de seleccionar el tipo de usuario a registrar
     private fun callRegisterTypeActivity(){
             val intent =  Intent(this, RegisterTypeActivity::class.java)
