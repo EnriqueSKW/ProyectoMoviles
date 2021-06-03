@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.login_layout.*
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.*
+import android.util.Log
 
 
 class LoginActivity : AppCompatActivity() {
@@ -34,25 +35,25 @@ class LoginActivity : AppCompatActivity() {
         //Click en el botón de entrar
         this.btnLogin.setOnClickListener {
 
-            val context= this
-            var helper = DataBaseHandler(context)
-            var db = helper.readableDatabase
-            var ra = db.rawQuery("Select * from Usuario",null)
+           // val context= this
+           // var helper = DataBaseHandler(context)
+           // var db = helper.readableDatabase
+           // var ra = db.rawQuery("Select * from Usuario",null)
 
-            if (ra.count==0&&txtCorreo.text.length>0&&txtContraseña.text.length>0)
-            {
-                helper.InsertData(UserModel(txtCorreo.toString(),txtContraseña.toString()))
-
-            }
-           this.callNavigationActivity()
-           // if(txtCorreo.text.toString() != "" && txtContraseña.text.toString() != "" )
+           // if (ra.count==0&&txtCorreo.text.length>0&&txtContraseña.text.length>0)
            // {
-                //this.LogInUsuario()
+            //    helper.InsertData(UserModel(txtCorreo.toString(),txtContraseña.toString()))
+
            // }
-              /*  else
+          // this.callNavigationActivity()
+            if(txtCorreo.text.toString() != "" && txtContraseña.text.toString() != "" )
+            {
+                this.LogInUsuario()
+            }
+                else
             {
                 Toast.makeText(applicationContext,"no ha llenado los campos necesarios",Toast.LENGTH_SHORT).show()
-            }*/
+            }
 
 
         }
@@ -102,33 +103,35 @@ class LoginActivity : AppCompatActivity() {
 
     fun LogInUsuario(){
         val queue = Volley.newRequestQueue(this)
-        val url2 = ConexionesURL.Login
+        val url2 = ConexionesURL.ConexionUsuario
         val request = object : StringRequest(Request.Method.POST, url2, Response.Listener<String> { response ->
 
-            val arrayElementos = JSONArray(response)
-            //validaciones
 
-            if(arrayElementos.length() > 0 || arrayElementos.length() != null)
+            //pasar el resultado a un objeto
+            val arreglo = JSONObject(response);
+            //para recuperar la informacion del objeto es asi
+            //arreglo.get("Id") el campo tal cual es
+
+
+
+            if(arreglo.length() > 0 || arreglo.length() != null)
             {
                 val sharedpref = object : shared(this.applicationContext){}
-                var Respuesta = JSONObject(arrayElementos.getString(0))
-                var resultado2:String = sharedpref.getNombreUsuario()
-                var Resultado:String = Respuesta.get("NombreUsuario").toString()
+
                 //Guardamos todos los datos en la clase de shared para tener las varibles de forma global
+                Log.d("TAG", arreglo.toString());
+               sharedpref.setNombreUsuario(arreglo.get("Nombre").toString());
+               sharedpref.setIdUsuario( arreglo.get("Id").toString() );
+                sharedpref.setPassword( arreglo.get("Contraseña").toString() );
+                sharedpref.setApellidosUsuario( arreglo.get("Apellidos").toString() );
+                sharedpref.setCorreoUsuario( arreglo.get("Correo").toString() );
+                sharedpref.SetTipoUsuario( arreglo.get("TipoUsuario").toString() );
+                sharedpref.setDireccionUsuario( arreglo.get("Direccion").toString() );
+                sharedpref.setTelefonoUsuario( arreglo.get("Telefono").toString() );
 
-                sharedpref.setNombreUsuario(Resultado);
-                sharedpref.setIdUsuario( Respuesta.get("IdUsuario").toString());
-                sharedpref.setApellidosUsuario( Respuesta.get("ApellidoUsuario").toString());
-                sharedpref.setCorreoUsuario( Respuesta.get("CorreoUsuario").toString());
-                sharedpref.setTelefonoUsuario( Respuesta.get("TelefonoUsuario").toString());
-                sharedpref.setIdUsuario( Respuesta.get("IdUsuario").toString());
-                sharedpref.setDireccionUsuario( Respuesta.get("DireccionUsuario").toString());
-                sharedpref.setImagenUsuario( Respuesta.get("ImagenUsuario").toString());
-                sharedpref.setPassword( Respuesta.get("PasswordUsuario").toString());
+               var resultado2 =  "Bienvenido " + sharedpref.getNombreUsuario()
 
-                resultado2 = sharedpref.getNombreUsuario()
-
-                Toast.makeText(applicationContext, resultado2,Toast.LENGTH_SHORT).show()
+               Toast.makeText(applicationContext, resultado2,Toast.LENGTH_SHORT).show()
                 // mandamos a llamar el main activity de la app despues de guardar los datos
                 this.callNavigationActivity()
             }
@@ -150,8 +153,9 @@ class LoginActivity : AppCompatActivity() {
 
             override fun getParams(): MutableMap<String, String> {
                 val params = HashMap<String, String>()
-                params.put("nombre", txtCorreo.text.toString())
-                params.put("password",txtContraseña.text.toString())
+                params.put("funcion", "funcionlogin")
+                params.put("correo", txtCorreo.text.toString())
+                params.put("contraseña",txtContraseña.text.toString())
                 return params
             }
 

@@ -19,6 +19,24 @@ import java.io.ByteArrayOutputStream
 import java.util.*
 import kotlin.collections.HashMap
 import android.Manifest
+import android.util.Base64.DEFAULT
+import android.util.Base64.encodeToString
+
+import java.io.FileInputStream
+import java.io.IOException
+import java.io.InputStream
+import java.util.*
+
+
+
+
+
+
+
+
+
+
+
 
 class RegisterRepairerActivity : Activity() {
     var imagen = ""
@@ -29,7 +47,7 @@ class RegisterRepairerActivity : Activity() {
 
         //Click en el botón de enviar
         this.btnSubmitReparador.setOnClickListener{
-            this.callRepairerNavigationActivity()
+           // this.callRepairerNavigationActivity()
         }
 
         this.btnImgReparador.setOnClickListener{
@@ -80,7 +98,7 @@ class RegisterRepairerActivity : Activity() {
         if(Nombre != "" && Apellidos != "" && imagen != "" && Telefono != "" && Password != "" && Correo != "" )
         {
             val queue = Volley.newRequestQueue(this)
-            val url2 = ConexionesURL.Registro
+            val url2 = ConexionesURL.ConexionUsuario
             val request = object : StringRequest(Request.Method.POST, url2, Response.Listener<String> { response ->
                 Toast.makeText(applicationContext, "Se registro Correctamente" , Toast.LENGTH_SHORT).show()
                 this.RegresarLogin()
@@ -92,13 +110,15 @@ class RegisterRepairerActivity : Activity() {
 
                 override fun getParams(): MutableMap<String, String> {
                     val params = HashMap<String, String>()
-                    params.put("Correo",Correo)
-                    params.put("Password", Password)
-                    params.put("Nombre", Nombre)
-                    params.put("Apellido",Apellidos)
-                    params.put("Telefono", Telefono)
-                    params.put("Direccion",Direccion)
-                    params.put("Imagen", imagen)
+                    params.put("correo",Correo)
+                    params.put("contraseña", Password)
+                    params.put("nombre", Nombre)
+                    params.put("apellidos",Apellidos)
+                    params.put("telefono", Telefono)
+                    params.put("direccion",Direccion)
+                    params.put("imagen", imagen)
+                    params.put("tipousuario", "2")
+                    params.put("funcion", "funcionregistrousuario")
 
                     return params
                 }
@@ -124,7 +144,7 @@ class RegisterRepairerActivity : Activity() {
     private fun pickImageFromGallery() {
         //Intent to pick image
         val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/JPG"
+        intent.type = "image/JPEG"
         startActivityForResult(intent, IMAGE_PICK_CODE)
     }
 
@@ -156,9 +176,9 @@ class RegisterRepairerActivity : Activity() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE){
-            imgProfileCliente.setImageURI(data?.data)
+            imgProfileReparador.setImageURI(data?.data)
 
-            val bitmap = (this.imgProfileCliente.drawable as BitmapDrawable).bitmap
+            val bitmap = (this.imgProfileReparador.drawable as BitmapDrawable).bitmap
             val stream = ByteArrayOutputStream()
             bitmap.compress(Bitmap.CompressFormat.JPEG,90,stream)
 

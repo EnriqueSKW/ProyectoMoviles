@@ -75,7 +75,7 @@ class RegisterCustomerActivity : Activity() {
         if(Nombre != "" && Apellidos != "" && imagen != "" && Telefono != "" && Password != "" && Correo != "" )
             {
                 val queue = Volley.newRequestQueue(this)
-                val url2 = ConexionesURL.Registro
+                val url2 = ConexionesURL.ConexionUsuario
                 val request = object : StringRequest(Request.Method.POST, url2, Response.Listener<String> { response ->
                     Toast.makeText(applicationContext, "Se registro Correctamente" , Toast.LENGTH_SHORT).show()
                     this.RegresarLogin()
@@ -87,13 +87,15 @@ class RegisterCustomerActivity : Activity() {
 
                     override fun getParams(): MutableMap<String, String> {
                         val params = HashMap<String, String>()
-                        params.put("Correo",Correo)
-                        params.put("Password", Password)
-                        params.put("Nombre", Nombre)
-                        params.put("Apellido",Apellidos)
-                        params.put("Telefono", Telefono)
-                        params.put("Direccion",Direccion)
-                        params.put("Imagen", imagen)
+                        params.put("correo",Correo)
+                        params.put("contraseña", Password)
+                        params.put("nombre", Nombre)
+                        params.put("apellidos",Apellidos)
+                        params.put("telefono", Telefono)
+                        params.put("direccion",Direccion)
+                        params.put("tipousuario","1")
+                        params.put("imagen", imagen)
+                        params.put("funcion", "funcionregistrousuario")
 
                         return params
                     }
@@ -126,7 +128,7 @@ class RegisterCustomerActivity : Activity() {
     private fun pickImageFromGallery() {
         //Intent to pick image
         val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/PNG"
+        intent.type = "image/JPEG"
         startActivityForResult(intent, IMAGE_PICK_CODE)
     }
 

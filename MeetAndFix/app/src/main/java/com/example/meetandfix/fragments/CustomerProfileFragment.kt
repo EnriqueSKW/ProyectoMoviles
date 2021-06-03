@@ -102,7 +102,7 @@ class CustomerProfileFragment : Fragment() {
         if(Nombre != "" && Apellidos != "" && imagen != "" && Telefono != "" && Password != ""  )
         {
             val queue = Volley.newRequestQueue(this.context)
-            val url = ConexionesURL.ModificarUsuario
+            val url = ConexionesURL.ConexionUsuario
             val request = object : StringRequest(Request.Method.POST, url, Response.Listener<String> { response ->
                 Toast.makeText(this.context, "Se registro Correctamente" , Toast.LENGTH_SHORT).show()
               
@@ -114,14 +114,14 @@ class CustomerProfileFragment : Fragment() {
 
                 override fun getParams(): MutableMap<String, String> {
                     val params = HashMap<String, String>()
-                    params.put("IdUsuario",sharedpref.getIdUsuario())
-                    params.put("Password", Password)
-                    params.put("Nombre", Nombre)
-                    params.put("Apellido",Apellidos)
-                    params.put("Telefono", Telefono)
-                    params.put("Direccion",Direccion)
-                    params.put("ImagenUsuario",imagen)
-
+                    params.put("idusuario",sharedpref.getIdUsuario())
+                    params.put("contraseña", Password)
+                    params.put("nombre", Nombre)
+                    params.put("apellidos",Apellidos)
+                    params.put("telefono", Telefono)
+                    params.put("direccion",Direccion)
+                    params.put("imagen",imagen)
+                    params.put("funcion","modificarusuario")
                     return params
                 }
 
