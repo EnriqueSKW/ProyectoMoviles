@@ -106,44 +106,46 @@ class LoginActivity : AppCompatActivity() {
         val url2 = ConexionesURL.ConexionUsuario
         val request = object : StringRequest(Request.Method.POST, url2, Response.Listener<String> { response ->
 
-
             //pasar el resultado a un objeto
-            val arreglo = JSONObject(response);
+            Log.d("Respuesta",response);
+
             //para recuperar la informacion del objeto es asi
             //arreglo.get("Id") el campo tal cual es
 
-
-
-            if(arreglo.length() > 0 || arreglo.length() != null)
+            if(response != null)
             {
+                val arreglo = JSONObject(response);
                 val sharedpref = object : shared(this.applicationContext){}
 
-                //Guardamos todos los datos en la clase de shared para tener las varibles de forma global
-                Log.d("TAG", arreglo.toString());
-               sharedpref.setNombreUsuario(arreglo.get("Nombre").toString());
-               sharedpref.setIdUsuario( arreglo.get("Id").toString() );
-                sharedpref.setPassword( arreglo.get("Contraseña").toString() );
-                sharedpref.setApellidosUsuario( arreglo.get("Apellidos").toString() );
-                sharedpref.setCorreoUsuario( arreglo.get("Correo").toString() );
-                sharedpref.SetTipoUsuario( arreglo.get("TipoUsuario").toString() );
-                sharedpref.setDireccionUsuario( arreglo.get("Direccion").toString() );
-                sharedpref.setTelefonoUsuario( arreglo.get("Telefono").toString() );
+                // Validamos que exista registro de un campo y si es nulo entonces la consulta no trajo nada
+                // y mostramos un mensaje de error
+                if (arreglo.isNull("Id"))
+                {
+                    Toast.makeText(applicationContext, "USUARIO NO EXISTE O CREDENCIALES INCORRECTAS", Toast.LENGTH_SHORT).show()
+                }
+                else {
+                    //Guardamos todos los datos en la clase de shared para tener las varibles de forma global
+                    Log.d("TAG", arreglo.toString());
+                    sharedpref.setNombreUsuario(arreglo.get("Nombre").toString());
+                    sharedpref.setIdUsuario(arreglo.get("Id").toString());
+                    sharedpref.setPassword(arreglo.get("Contraseña").toString());
+                    sharedpref.setApellidosUsuario(arreglo.get("Apellidos").toString());
+                    sharedpref.setCorreoUsuario(arreglo.get("Correo").toString());
+                    sharedpref.SetTipoUsuario(arreglo.get("TipoUsuario").toString());
+                    sharedpref.setDireccionUsuario(arreglo.get("Direccion").toString());
+                    sharedpref.setTelefonoUsuario(arreglo.get("Telefono").toString());
 
-               var resultado2 =  "Bienvenido " + sharedpref.getNombreUsuario()
+                    var resultado2 = "Bienvenido " + sharedpref.getNombreUsuario()
 
-               Toast.makeText(applicationContext, resultado2,Toast.LENGTH_SHORT).show()
-                // mandamos a llamar el main activity de la app despues de guardar los datos
-                this.callNavigationActivity()
+                    Toast.makeText(applicationContext, resultado2, Toast.LENGTH_SHORT).show()
+                    // mandamos a llamar el main activity de la app despues de guardar los datos
+                    this.callNavigationActivity()
+                }
             }
             else
             {
                 Toast.makeText(applicationContext, "Usuario no existe, Correo y/o contraseña incorrectos",Toast.LENGTH_SHORT).show()
             }
-
-
-
-
-
 
            //Toast.makeText(applicationContext, response.toString() , Toast.LENGTH_SHORT).show()
         }, Response.ErrorListener { VolleyError ->

@@ -29,15 +29,6 @@ import java.util.*
 
 
 
-
-
-
-
-
-
-
-
-
 class RegisterRepairerActivity : Activity() {
     var imagen = ""
 
@@ -100,10 +91,12 @@ class RegisterRepairerActivity : Activity() {
             val queue = Volley.newRequestQueue(this)
             val url2 = ConexionesURL.ConexionUsuario
             val request = object : StringRequest(Request.Method.POST, url2, Response.Listener<String> { response ->
+                //Aqui es donde entra cuando se logro correctamente la accion
                 Toast.makeText(applicationContext, "Se registro Correctamente" , Toast.LENGTH_SHORT).show()
                 this.RegresarLogin()
 
             }, Response.ErrorListener { VolleyError ->
+                //Aqui entra cuando sucede un error
                 Toast.makeText(applicationContext, VolleyError.toString(), Toast.LENGTH_LONG ).show()
             }){
                 @Throws(AuthFailureError::class)
