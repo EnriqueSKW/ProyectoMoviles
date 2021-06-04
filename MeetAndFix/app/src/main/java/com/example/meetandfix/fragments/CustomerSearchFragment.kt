@@ -1,14 +1,28 @@
 package com.example.meetandfix.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.AuthFailureError
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.example.meetandfix.ConexionesURL
 import com.example.meetandfix.R
+import com.example.meetandfix.ReviewAdapter.ReviewAdapter
+import com.example.meetandfix.ReviewAdapter.ReviewModel
 import com.example.meetandfix.SearchAdapter.ShopAdapter
 import com.example.meetandfix.SearchAdapter.ShopModel
+import com.example.meetandfix.shared
+import kotlinx.android.synthetic.main.login_layout.*
+import org.json.JSONArray
+import org.json.JSONObject
 
 class CustomerSearchFragment : Fragment(),ShopAdapter.ClickListener {
 
@@ -34,16 +48,7 @@ class CustomerSearchFragment : Fragment(),ShopAdapter.ClickListener {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val recycler= view?.findViewById<RecyclerView>(R.id.Search_RecyclerID)
-        recycler?.adapter = ShopAdapter(listOf(
-            ShopModel(0,"Store1","direccion1","https://loremflickr.com/320/240"),
-            ShopModel(0,"Store2","direccion2","https://loremflickr.com/320/240"),
-            ShopModel(0,"Store3","direccion3","https://loremflickr.com/320/240"),
-            ShopModel(0,"Store4","direccion4","https://loremflickr.com/320/240"),
-            ShopModel(0,"Store5","direccion5","https://loremflickr.com/320/240"),
-            ShopModel(0,"Store6","direccion6","https://loremflickr.com/320/240")
-
-        ),this)
+        this.ConseguirTiendas();
         //ir al fragment de la vista del negocio
     }
 
@@ -69,6 +74,72 @@ class CustomerSearchFragment : Fragment(),ShopAdapter.ClickListener {
 
         customerStoreFragment.arguments=bundle;
         nextFragment(customerStoreFragment)
+    }
+
+    fun ConseguirTiendas()
+    {    val List: MutableList<ShopModel> = ArrayList()
+        val queue = Volley.newRequestQueue(this.context)
+        val url2 = ConexionesURL.ConexionUsuario
+        val request = object : StringRequest(Request.Method.POST, url2, Response.Listener<String> { response ->
+
+            //pasar el resultado a un objeto
+            Log.d("Respuesta",response);
+
+            //para recuperar la informacion del objeto es asi
+            //arreglo.get("Id") el campo tal cual es
+
+            if(response != null)
+            {
+
+                val arreglo = JSONArray(response);
+                val Primero = arreglo.getJSONObject(0);
+
+
+                // Validamos que exista registro de un campo y si es nulo entonces la consulta no trajo nada
+                // y mostramos un mensaje de error
+                if (Primero.isNull("Id"))
+                {
+                    Toast.makeText(this.context, "No hay tiendas en este momento", Toast.LENGTH_SHORT).show()
+                }
+                else {
+                    for (i in 0 until arreglo.length()) {
+                        val jo: JSONObject = arreglo.getJSONObject(i)
+                        List.add(ShopModel(jo.getInt("Id").toInt(),jo.get("NombreNegocio").toString(),jo.get("Direccion").toString(),jo.get("Imagen").toString()))
+                    }
+                    //Guardamos todos los datos en la clase de shared para tener las varibles de forma global
+                    val recycler= view?.findViewById<RecyclerView>(R.id.Search_RecyclerID)
+                    recycler?.adapter = ShopAdapter(List,this);
+
+
+                }
+
+            }
+
+
+
+            else
+            {
+                Toast.makeText(this.context, "error en la peticion",
+                    Toast.LENGTH_SHORT).show()
+            }
+
+            //Toast.makeText(applicationContext, response.toString() , Toast.LENGTH_SHORT).show()
+        }, Response.ErrorListener { VolleyError ->
+            Toast.makeText(this.context, VolleyError.toString(), Toast.LENGTH_LONG ).show()
+        }){
+            @Throws(AuthFailureError::class)
+
+            override fun getParams(): MutableMap<String, String> {
+                val params = HashMap<String, String>()
+                params.put("funcion", "funcionobtenertiendas")
+                return params
+            }
+
+        }
+
+        queue.add(request)
+
+
     }
 
 }
