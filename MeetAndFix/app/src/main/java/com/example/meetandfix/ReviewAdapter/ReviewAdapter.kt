@@ -13,12 +13,12 @@ class ReviewAdapter(val reviews: List<ReviewModel>):RecyclerView.Adapter<ReviewA
 
         private val Nombre = view.findViewById<TextView>(R.id.Card_Review_NombreClienteID)
         private val Reseña = view.findViewById<TextView>(R.id.Card_Review_ReseñaClienteID)
-        private val Fecha =view.findViewById<TextView>(R.id.Card_Review_FechaClienteID)
+  
 
         fun bind(review: ReviewModel) {
             Nombre.text=review.nombre
             Reseña.text=review.reseña
-            Fecha.text=review.fecha
+
         }
     }
 

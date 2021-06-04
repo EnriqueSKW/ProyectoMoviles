@@ -4,17 +4,15 @@ public class ReviewModel {
     private int Id;
     private String Nombre;
     private String Reseña;
-    private String Fecha;
+    private String IdCliente;
+    private String IdReparador;
 
-    public ReviewModel(int id, String nombre, String reseña, String fecha) {
+    public ReviewModel(int id, String nombre, String reseña, String idCliente, String idReparador) {
         Id = id;
         Nombre = nombre;
         Reseña = reseña;
-        Fecha = fecha;
-    }
-
-    public ReviewModel(int id) {
-        Id = id;
+        IdCliente = idCliente;
+        IdReparador = idReparador;
     }
 
     public int getId() {
@@ -41,12 +39,20 @@ public class ReviewModel {
         Reseña = reseña;
     }
 
-    public String getFecha() {
-        return Fecha;
+    public String getIdCliente() {
+        return IdCliente;
     }
 
-    public void setFecha(String fecha) {
-        Fecha = fecha;
+    public void setIdCliente(String idCliente) {
+        IdCliente = idCliente;
+    }
+
+    public String getIdReparador() {
+        return IdReparador;
+    }
+
+    public void setIdReparador(String idReparador) {
+        IdReparador = idReparador;
     }
 
     @Override
@@ -55,7 +61,8 @@ public class ReviewModel {
                 "Id=" + Id +
                 ", Nombre='" + Nombre + '\'' +
                 ", Reseña='" + Reseña + '\'' +
-                ", Fecha='" + Fecha + '\'' +
+                ", IdCliente='" + IdCliente + '\'' +
+                ", IdReparador='" + IdReparador + '\'' +
                 '}';
     }
 }
