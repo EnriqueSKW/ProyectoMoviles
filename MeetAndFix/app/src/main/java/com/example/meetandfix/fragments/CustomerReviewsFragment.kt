@@ -17,6 +17,7 @@ import com.example.meetandfix.ConexionesURL
 import com.example.meetandfix.R
 import com.example.meetandfix.ReviewAdapter.ReviewAdapter
 import com.example.meetandfix.ReviewAdapter.ReviewModel
+import com.example.meetandfix.shared
 import kotlinx.android.synthetic.main.fragment_customer_reviews.*
 import kotlinx.android.synthetic.main.login_layout.*
 import org.json.JSONArray
@@ -67,9 +68,6 @@ class CustomerReviewsFragment : Fragment() {
             //pasar el resultado a un objeto
             Log.d("Respuesta",response);
 
-            //para recuperar la informacion del objeto es asi
-            //arreglo.get("Id") el campo tal cual es
-
             if(response != null)
             {
 
@@ -100,12 +98,13 @@ class CustomerReviewsFragment : Fragment() {
         }, Response.ErrorListener { VolleyError ->
             Toast.makeText(this.context, VolleyError.toString(), Toast.LENGTH_LONG ).show()
         }){
+            val sharedpref = object : shared(context){}
             @Throws(AuthFailureError::class)
 
             override fun getParams(): MutableMap<String, String> {
                 val params = HashMap<String, String>()
                 params.put("funcion", "funcionobtenerreseñas")
-                params.put("idreparador", "1")
+                params.put("idreparador", sharedpref.getTiendaReparador())
                 return params
             }
 

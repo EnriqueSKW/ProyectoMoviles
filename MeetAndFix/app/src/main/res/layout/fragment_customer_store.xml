@@ -83,19 +83,6 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="24sp" />
 
-                <RatingBar
-                    android:id="@+id/ratingBarNegocioCliente"
-                    android:layout_width="250dp"
-                    android:layout_height="44dp"
-                    android:isIndicator="true"
-                    android:numStars="5"
-                    android:rating="1"
-                    android:scaleX=".7"
-                    android:scaleY=".7"
-                    android:stepSize="1"
-                    android:theme="@style/RatingBar"
-                    android:transformPivotX="0dp"
-                    android:transformPivotY="0dp" />
             </LinearLayout>
 
 
@@ -103,8 +90,56 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="395dp"
+            android:layout_height="397dp"
             android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnVerResñasCliente"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_round_button"
+                    android:drawableStart="@drawable/ic_white_star"
+                    android:drawableLeft="@drawable/ic_white_star"
+                    android:drawablePadding="5dp"
+                    android:paddingStart="20dp"
+                    android:paddingLeft="20dp"
+                    android:paddingEnd="0dp"
+                    android:paddingRight="0dp"
+                    android:text="@string/ver_rese_as"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/btnAgendarCliente"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_round_button"
+                    android:drawableStart="@drawable/ic_white_pencil"
+                    android:drawableLeft="@drawable/ic_white_pencil"
+                    android:drawablePadding="5dp"
+                    android:paddingStart="20dp"
+                    android:paddingLeft="20dp"
+                    android:paddingEnd="0dp"
+                    android:paddingRight="0dp"
+                    android:text="@string/agendar_cita"
+                    android:textSize="14sp" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/lblDireccionTitleCliente"
@@ -133,105 +168,35 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="20sp" />
 
-            <com.google.android.gms.maps.MapView
-                android:id="@+id/mapDireccionNegocioCliente"
+            <TextView
+                android:id="@+id/Telefononegocioidstore"
                 android:layout_width="match_parent"
-                android:layout_height="110dp"
+                android:layout_height="34dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp" />
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:text="TelefonoNegocioID"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                tools:text="Telefono" />
 
             <TextView
-                android:id="@+id/lblGaleriaCliente"
+                android:id="@+id/Correonegociostoreid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/galer_a"
-                android:textColor="@color/colorBlack"
-                android:textSize="24sp" />
-
-            <HorizontalScrollView
-                android:id="@+id/horizontalscrollGaleriaCliente"
-                android:layout_width="match_parent"
-                android:layout_height="151dp">
-
-            </HorizontalScrollView>
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:text="Correo"
+                android:textColor="#000000"
+                android:textSize="20sp" />
 
 
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btnVerResñasCliente"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/custom_round_button"
-                android:drawableStart="@drawable/ic_white_star"
-                android:drawableLeft="@drawable/ic_white_star"
-                android:drawablePadding="5dp"
-                android:paddingStart="20dp"
-                android:paddingLeft="20dp"
-                android:paddingEnd="0dp"
-                android:paddingRight="0dp"
-                android:text="@string/ver_rese_as"
-                android:textSize="14sp" />
-
-            <Button
-                android:id="@+id/btnAgendarCliente"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
-                android:background="@drawable/custom_round_button"
-                android:drawableStart="@drawable/ic_white_pencil"
-                android:drawableLeft="@drawable/ic_white_pencil"
-                android:drawablePadding="5dp"
-                android:paddingStart="20dp"
-                android:paddingLeft="20dp"
-                android:paddingEnd="0dp"
-                android:paddingRight="0dp"
-                android:text="@string/agendar_cita"
-                android:textSize="14sp" />
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/btnEnviarMensajeCliente"
-            android:layout_width="193dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:background="@drawable/custom_round_button"
-            android:drawableStart="@drawable/ic_send"
-            android:drawableLeft="@drawable/ic_send"
-            android:drawablePadding="5dp"
-            android:paddingStart="20dp"
-            android:paddingLeft="20dp"
-            android:paddingEnd="0dp"
-            android:paddingRight="0dp"
-            android:text="Enviar mensaje"
-            android:textSize="14sp" />
 
 
     </LinearLayout>

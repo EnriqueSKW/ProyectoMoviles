@@ -27,7 +27,8 @@ class CustomerStoreFragment : Fragment() {
     private val customerChatFragment = ChatFragment()
     var getNombre: String? = ""
     var getDireccion: String? = ""
-
+    var getCorreo: String? = ""
+    var getTelefono: String? = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -50,11 +51,23 @@ class CustomerStoreFragment : Fragment() {
         getNombre = arguments?.getString("nombre")
         getDireccion = arguments?.getString("direccion")
         var getImagen = arguments?.getString("Imagen")
+         getTelefono = arguments?.getString("Telefono")
+         getCorreo =  arguments?.getString("Correo")
+
         val Nombre = view?.findViewById<TextView>(R.id.lblNegocioNombreCliente)
         val Direccion = view?.findViewById<TextView>(R.id.lblDireccionRealCliente)
+        val Telefono = view?.findViewById<TextView>(R.id.Telefononegocioidstore)
+        val Correo = view?.findViewById<TextView>(R.id.Correonegociostoreid)
+        // val Telefono = view?.findViewById<TextView>(R,id.)
         if (Nombre != null && Direccion!=null) {
             Nombre.setText(getNombre);
             Direccion.setText(getDireccion);
+            if (Telefono != null) {
+                Telefono.setText( "Telefono: " + getTelefono)
+            };
+            if (Correo != null) {
+                Correo.setText( "Correo: " + getCorreo)
+            };
         };
         if(getImagen != null)
         {
@@ -76,10 +89,7 @@ class CustomerStoreFragment : Fragment() {
             nextFragment(customerScheduleFragment)
         }
 
-        //ir al fragmento del chat
-        this.btnEnviarMensajeCliente.setOnClickListener {
-            nextFragment(customerChatFragment)
-        }
+
 
     }
 

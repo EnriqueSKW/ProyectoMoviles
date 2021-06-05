@@ -36,14 +36,6 @@
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/Review_RecyclerViewID"
-        android:layout_width="match_parent"
-        android:layout_height="572dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:itemCount="2"
-        tools:listitem="@layout/viewlook" />
-
     <Button
         android:id="@+id/btnEscribirReseñaCliente"
         android:layout_width="match_parent"
@@ -54,6 +46,14 @@
         android:layout_marginRight="10dp"
         android:background="#2A81C1"
         android:text="Escribir Reseña" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/Review_RecyclerViewID"
+        android:layout_width="match_parent"
+        android:layout_height="442dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:itemCount="2"
+        tools:listitem="@layout/viewlook" />
 
 
 </LinearLayout>
