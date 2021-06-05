@@ -82,7 +82,7 @@ class RegisterRepairerActivity : Activity() {
         val Direccion = txtDireccionReparador.text.toString()
         val Password = txtContraseñaReparador.text.toString()
         val Correo = txtCorreoReparador.text.toString()
-
+        val NombreNegocio = txtNegocioReparador.text.toString()
 
 
 
@@ -109,6 +109,7 @@ class RegisterRepairerActivity : Activity() {
                     params.put("apellidos",Apellidos)
                     params.put("telefono", Telefono)
                     params.put("direccion",Direccion)
+                    params.put("nombrenegocio",NombreNegocio)
                     params.put("imagen", imagen)
                     params.put("tipousuario", "2")
                     params.put("funcion", "funcionregistrousuario")

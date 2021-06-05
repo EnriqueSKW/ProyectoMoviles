@@ -82,6 +82,13 @@ class CustomerSearchFragment : Fragment(),ShopAdapter.ClickListener {
         bundle.putString("direccion", shop.direccion);
         bundle.putString("Id",shop.id.toString());
         bundle.putString("Imagen",shop.image);
+        bundle.putString("Telefono",shop.telefono);
+        bundle.putString("Correo",shop.correo);
+
+        val sharedpref = object : shared(this.context){}
+
+        sharedpref.SetIdTiendaReparador(shop.id.toString())
+
         customerStoreFragment.arguments=bundle;
         nextFragment(customerStoreFragment)
     }
@@ -112,11 +119,11 @@ class CustomerSearchFragment : Fragment(),ShopAdapter.ClickListener {
                         val jo: JSONObject = arreglo.getJSONObject(i)
                         if(jo.isNull("Imagen"))
                         {
-                            List.add(ShopModel(jo.getInt("Id").toInt(),jo.get("NombreNegocio").toString(),jo.get("Direccion").toString(),jo.get("Imagen").toString()))
+                            List.add(ShopModel(jo.getInt("Id").toInt(),jo.get("NombreNegocio").toString(),jo.get("Direccion").toString(),jo.get("Telefono").toString(),jo.get("Correo").toString(),jo.get("Imagen").toString()))
                         }
                         else
                         {
-                            List.add(ShopModel(jo.getInt("Id").toInt(),jo.get("NombreNegocio").toString(),jo.get("Direccion").toString(),jo.get("Imagen").toString()))
+                            List.add(ShopModel(jo.getInt("Id").toInt(),jo.get("NombreNegocio").toString(),jo.get("Direccion").toString(),jo.get("Telefono").toString(),jo.get("Correo").toString(),jo.get("Imagen").toString()))
                         }
 
                     }

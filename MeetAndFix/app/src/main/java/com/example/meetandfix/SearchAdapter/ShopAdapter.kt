@@ -25,13 +25,17 @@ class ShopAdapter(val shops: List<ShopModel>, private var clickListener: ClickLi
         private val Nombre = view.findViewById<TextView>(R.id.NameRepairerShopID)
         private val Direccion= view.findViewById<TextView>(R.id.DireccionRepairerShopID)
         private val Imagen= view.findViewById<ImageView>(R.id.Image_RepairerShopID)
+        private val Correo= view.findViewById<TextView>(R.id.correoreparadorshop)
+        private val Telefono= view.findViewById<TextView>(R.id.telefonoshop)
 
 
 
         @RequiresApi(Build.VERSION_CODES.O)
         fun bind(shop: ShopModel) {
-            Nombre.text=shop.nombre
-            Direccion.text=shop.direccion
+            Nombre.text= " Nombre: " + shop.nombre
+            Direccion.text= " Direccion: " +shop.direccion
+            Correo.text = " Correo:" + shop.correo
+            Telefono.text = " Telefono: " + shop.telefono
             if(shop.image != null)
             {
                 val imgByteArrayFA =  getDecoder().decode(shop.image)
@@ -47,6 +51,7 @@ class ShopAdapter(val shops: List<ShopModel>, private var clickListener: ClickLi
         return ShopAdapter.ViewHolder(view)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val shop=shops[position]
         holder.bind(shop)

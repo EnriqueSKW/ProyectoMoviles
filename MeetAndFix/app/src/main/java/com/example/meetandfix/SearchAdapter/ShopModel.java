@@ -7,11 +7,15 @@ public class ShopModel {
     private String Nombre;
     private String Direccion;
     private String Image;
+    private String Telefono;
+    private String Correo;
 
-    public ShopModel(int id, String nombre, String direccion, String image) {
+    public ShopModel(int id, String nombre, String direccion,String telefono,String correo, String image) {
         Id = id;
         Nombre = nombre;
         Direccion = direccion;
+        Telefono = telefono;
+        Correo = correo;
         Image = image;
     }
 
@@ -21,6 +25,22 @@ public class ShopModel {
 
     public void setId(int id) {
         Id = id;
+    }
+
+    public String getTelefono() {
+        return Telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        Telefono = telefono;
+    }
+
+    public String getCorreo() {
+        return Correo;
+    }
+
+    public void setCorreo(String Correo) {
+        Correo = Correo;
     }
 
     public String getNombre() {
@@ -53,6 +73,8 @@ public class ShopModel {
                 "Id=" + Id +
                 ", Nombre='" + Nombre + '\'' +
                 ", Direccion='" + Direccion + '\'' +
+                ", Correo='" + Correo + '\'' +
+                ", Telefono='" + Telefono + '\'' +
                 ", Image='" + Image + '\'' +
                 '}';
     }

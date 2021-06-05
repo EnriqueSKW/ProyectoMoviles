@@ -75,15 +75,16 @@ class CustomerWriteReviewFragment : Fragment() {
             }, Response.ErrorListener { VolleyError ->
                 Toast.makeText(this.context, VolleyError.toString(), Toast.LENGTH_LONG ).show()
             }){
+                val sharedpref = object : shared(context){}
                 @Throws(AuthFailureError::class)
 
                 override fun getParams(): MutableMap<String, String> {
                     val params = HashMap<String, String>()
                     params.put("funcion", "funcionreseñar")
-                    params.put("idcliente", "1")
+                    params.put("idcliente", sharedpref.getIdUsuario())
                     params.put("reseña",txtEscribirReseñaCliente.text.toString())
                     params.put("nombrecliente","cliente")
-                    params.put("idreparador","1")
+                    params.put("idreparador",sharedpref.getTiendaReparador())
                     return params
                 }
 

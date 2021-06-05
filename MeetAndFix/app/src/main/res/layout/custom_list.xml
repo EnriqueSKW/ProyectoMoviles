@@ -39,8 +39,24 @@
                     android:id="@+id/NameRepairerShopID"
                     android:layout_width="match_parent"
                     android:layout_height="34dp"
-                    android:background="#657CEF"
+                    android:background="#2196F3"
                     android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/telefonoshop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:text="telefonoshop"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/correoreparadorshop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:text="TextView"
+                    android:textColor="#000000" />
 
                 <TextView
                     android:id="@+id/DireccionRepairerShopID"
@@ -49,6 +65,7 @@
                     android:background="#FFFFFF"
                     android:text="TextView"
                     android:textColor="#000000" />
+
             </LinearLayout>
 
         </LinearLayout>

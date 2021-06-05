@@ -12,6 +12,8 @@ public class shared {
         prefs = PreferenceManager.getDefaultSharedPreferences(cntx);
     }
 
+    public void SetIdTiendaReparador(String d) { prefs.edit().putString("TiendaReparador",d).commit(); }
+
     public void setIdUsuario(String d)
     {
         prefs.edit().putString("IdUsuario",d).commit();
@@ -53,7 +55,10 @@ public class shared {
         prefs.edit().putString("TelefonoUsuario", d).commit();
     }
 
-
+    public String getTiendaReparador() {
+        String d = prefs.getString("TiendaReparador","");
+        return  d;
+    }
 
     public String getNombreUsuario() {
         String d = prefs.getString("NombreUsuario","");
