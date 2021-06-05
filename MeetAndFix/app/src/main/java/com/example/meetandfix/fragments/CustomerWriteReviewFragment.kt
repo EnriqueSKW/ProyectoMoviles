@@ -85,12 +85,13 @@ class CustomerWriteReviewFragment : Fragment() {
                     params.put("funcion", "funcionreseñar")
                     params.put("idcliente", sharedpref.getIdUsuario())
                     params.put("reseña",txtEscribirReseñaCliente.text.toString())
-                    params.put("nombrecliente","cliente")
+                    params.put("nombrecliente",sharedpref.getNombreUsuario())
                     params.put("idreparador",sharedpref.getTiendaReparador())
                     return params
                 }
 
             }
+            
 
             queue.add(request)
         }
