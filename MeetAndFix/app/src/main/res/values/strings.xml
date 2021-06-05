@@ -89,6 +89,8 @@
     <string name="mensaje">Mensaje</string>
     <string name="fecha_de_envio">Fecha de envio</string>
     <string name="escribe_un_mensaje">Escribe un mensaje</string>
+    <string name="card_fecha">Fecha de la cita agendada</string>
+    <string name="nombre_cita">Nombre Cliente/Reparador</string>
     <string-array name="filter_array">
         <item>Nombre</item>
         <item>Dirección</item>

@@ -33,15 +33,10 @@
 
     </LinearLayout>
 
-    <CalendarView
-        android:id="@+id/calendarRepairer"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/Repairer_CitasAgendadasRecyclerID"
         android:layout_width="match_parent"
-        android:layout_height="313dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="150dp"
-        android:layout_marginRight="10dp"
-        android:background="@color/colorPrimary"
-        android:maxDate="1/1/2025"
-        android:minDate="11/1/2020" />
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

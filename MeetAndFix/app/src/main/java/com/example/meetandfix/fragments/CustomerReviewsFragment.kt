@@ -81,7 +81,7 @@ class CustomerReviewsFragment : Fragment() {
                 // y mostramos un mensaje de error
                 if (Primero.isNull("Id"))
                 {
-                    Toast.makeText(this.context, "No hay reseñas en este momento", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this.context, "No hay reseñas de esta tienda", Toast.LENGTH_SHORT).show()
                 }
                 else {
                     for (i in 0 until arreglo.length()) {

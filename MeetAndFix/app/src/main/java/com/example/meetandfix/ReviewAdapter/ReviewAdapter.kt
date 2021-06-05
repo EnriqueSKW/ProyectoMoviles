@@ -11,8 +11,8 @@ class ReviewAdapter(val reviews: List<ReviewModel>):RecyclerView.Adapter<ReviewA
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
-        private val Nombre = view.findViewById<TextView>(R.id.Card_Review_NombreClienteID)
-        private val Reseña = view.findViewById<TextView>(R.id.Card_Review_ReseñaClienteID)
+        private val Nombre = view.findViewById<TextView>(R.id.Card_NombreClienteReviewsID)
+        private val Reseña = view.findViewById<TextView>(R.id.Card_Reseña_ReviewsID)
   
 
         fun bind(review: ReviewModel) {
