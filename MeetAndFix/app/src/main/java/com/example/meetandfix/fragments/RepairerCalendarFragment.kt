@@ -18,6 +18,7 @@ import com.example.meetandfix.R
 import com.example.meetandfix.SearchAdapter.ShopAdapter
 import com.example.meetandfix.fragments.CitasAdapter.CitaAdapter
 import com.example.meetandfix.fragments.CitasAdapter.CitaModel
+import com.example.meetandfix.shared
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -87,12 +88,13 @@ class RepairerCalendarFragment : Fragment(), CitaAdapter.ClickListener  {
         }, Response.ErrorListener { VolleyError ->
             Toast.makeText(this.context, VolleyError.toString(), Toast.LENGTH_LONG ).show()
         }){
+            val sharedpref = object : shared(context){}
             @Throws(AuthFailureError::class)
 
             override fun getParams(): MutableMap<String, String> {
                 val params = HashMap<String, String>()
                 params.put("funcion", "funcioncitasreparador")
-                params.put("idreparador", "1")
+                params.put("idreparador", sharedpref.getIdUsuario())
                 return params
             }
 

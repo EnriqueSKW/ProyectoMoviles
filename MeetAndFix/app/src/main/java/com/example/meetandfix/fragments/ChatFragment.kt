@@ -75,13 +75,14 @@ class ChatFragment : Fragment() {
         }, Response.ErrorListener { VolleyError ->
             Toast.makeText(this.context, VolleyError.toString(), Toast.LENGTH_LONG ).show()
         }){
+            val sharedpref = object : shared(context){}
             @Throws(AuthFailureError::class)
 
             override fun getParams(): MutableMap<String, String> {
                 val params = HashMap<String, String>()
                 params.put("funcion", "funcionestado")
                 params.put("idcliente", textIdClienteinfocita.text.toString())
-                params.put("idreparador","1")
+                params.put("idreparador",sharedpref.getIdUsuario())
                 params.put("estado",status)
                 return params
             }
