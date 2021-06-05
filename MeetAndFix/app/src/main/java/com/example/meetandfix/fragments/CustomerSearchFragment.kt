@@ -94,7 +94,8 @@ class CustomerSearchFragment : Fragment(),ShopAdapter.ClickListener {
     }
 
     fun ConseguirTiendas()
-    {    val List: MutableList<ShopModel> = ArrayList()
+    {
+        val List: MutableList<ShopModel> = ArrayList()
         val queue = Volley.newRequestQueue(this.context)
         val url2 = ConexionesURL.ConexionUsuario
         val request = @RequiresApi(Build.VERSION_CODES.O)
