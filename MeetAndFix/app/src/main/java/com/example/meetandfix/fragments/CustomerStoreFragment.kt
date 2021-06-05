@@ -1,13 +1,22 @@
 package com.example.meetandfix.fragments
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.os.Build
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.URLUtil.decode
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
+import androidx.fragment.app.Fragment
 import com.example.meetandfix.R
 import kotlinx.android.synthetic.main.fragment_customer_store.*
+import java.io.InputStream
+import java.lang.Byte.decode
+import java.util.*
 
 
 class CustomerStoreFragment : Fragment() {
@@ -34,17 +43,28 @@ class CustomerStoreFragment : Fragment() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         // super.onCreate(savedInstanceState)
         getNombre = arguments?.getString("nombre")
         getDireccion = arguments?.getString("direccion")
+        var getImagen = arguments?.getString("Imagen")
         val Nombre = view?.findViewById<TextView>(R.id.lblNegocioNombreCliente)
         val Direccion = view?.findViewById<TextView>(R.id.lblDireccionRealCliente)
         if (Nombre != null && Direccion!=null) {
             Nombre.setText(getNombre);
             Direccion.setText(getDireccion);
         };
+        if(getImagen != null)
+        {
+            val imgByteArrayFA =  Base64.getDecoder().decode(getImagen)
+            val decodedImage = BitmapFactory.decodeByteArray(imgByteArrayFA, 0, imgByteArrayFA.size)
+            val Imagen =  view?.findViewById<ImageView>(R.id.imgNegocioMainImage)
+            Imagen?.setImageBitmap(decodedImage)
+        }
+
+
 
         //ir al fragmento de reseñas
         this.btnVerResñasCliente.setOnClickListener {

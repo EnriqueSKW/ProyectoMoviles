@@ -1,5 +1,7 @@
 package com.example.meetandfix.fragments
 
+import android.graphics.BitmapFactory
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -23,6 +25,13 @@ import com.example.meetandfix.shared
 import kotlinx.android.synthetic.main.login_layout.*
 import org.json.JSONArray
 import org.json.JSONObject
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
+import java.io.ByteArrayOutputStream
+import java.util.*
+import androidx.annotation.RequiresApi
+import java.util.Base64.getDecoder
 
 class CustomerSearchFragment : Fragment(),ShopAdapter.ClickListener {
 
@@ -71,7 +80,8 @@ class CustomerSearchFragment : Fragment(),ShopAdapter.ClickListener {
     override fun ClickedItem(shop: ShopModel) {
         bundle.putString("nombre", shop.nombre);
         bundle.putString("direccion", shop.direccion);
-
+        bundle.putString("Id",shop.id.toString());
+        bundle.putString("Imagen",shop.image);
         customerStoreFragment.arguments=bundle;
         nextFragment(customerStoreFragment)
     }
@@ -80,13 +90,9 @@ class CustomerSearchFragment : Fragment(),ShopAdapter.ClickListener {
     {    val List: MutableList<ShopModel> = ArrayList()
         val queue = Volley.newRequestQueue(this.context)
         val url2 = ConexionesURL.ConexionUsuario
-        val request = object : StringRequest(Request.Method.POST, url2, Response.Listener<String> { response ->
+        val request = @RequiresApi(Build.VERSION_CODES.O)
+        object : StringRequest(Request.Method.POST, url2, Response.Listener<String> { response ->
 
-            //pasar el resultado a un objeto
-            Log.d("Respuesta",response);
-
-            //para recuperar la informacion del objeto es asi
-            //arreglo.get("Id") el campo tal cual es
 
             if(response != null)
             {
@@ -104,7 +110,15 @@ class CustomerSearchFragment : Fragment(),ShopAdapter.ClickListener {
                 else {
                     for (i in 0 until arreglo.length()) {
                         val jo: JSONObject = arreglo.getJSONObject(i)
-                        List.add(ShopModel(jo.getInt("Id").toInt(),jo.get("NombreNegocio").toString(),jo.get("Direccion").toString(),jo.get("Imagen").toString()))
+                        if(jo.isNull("Imagen"))
+                        {
+                            List.add(ShopModel(jo.getInt("Id").toInt(),jo.get("NombreNegocio").toString(),jo.get("Direccion").toString(),null))
+                        }
+                        else
+                        {
+                            List.add(ShopModel(jo.getInt("Id").toInt(),jo.get("NombreNegocio").toString(),jo.get("Direccion").toString(),jo.get("Imagen").toString()))
+                        }
+
                     }
                     //Guardamos todos los datos en la clase de shared para tener las varibles de forma global
                     val recycler= view?.findViewById<RecyclerView>(R.id.Search_RecyclerID)
@@ -114,8 +128,6 @@ class CustomerSearchFragment : Fragment(),ShopAdapter.ClickListener {
                 }
 
             }
-
-
 
             else
             {

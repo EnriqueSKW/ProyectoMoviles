@@ -20,15 +20,15 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.meetandfix.ConexionesURL
-import com.example.meetandfix.R
-import com.example.meetandfix.RegisterCustomerActivity
-import com.example.meetandfix.shared
 import kotlinx.android.synthetic.main.fragment_customer_profile.*
 import kotlinx.android.synthetic.main.register_customer_form_layout.*
 import java.io.ByteArrayOutputStream
 import java.util.*
 import android.Manifest
+import androidx.core.content.ContextCompat.checkSelfPermission
+import com.example.meetandfix.*
+
+
 import kotlinx.android.synthetic.main.register_customer_form_layout.*
 
 import kotlin.collections.HashMap
@@ -55,15 +55,15 @@ class CustomerProfileFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val sharedpref = object : shared(this.context){}
+        val sharedpref = object : shared(this.context) {}
         val Nombre = sharedpref.getNombreUsuario()
         val Apellidos = sharedpref.getApellidosUsuario()
         val Correo = sharedpref.getCorreoUsuario()
         val Password = sharedpref.getPasswordUsuario()
-        val Direccion  = sharedpref.getDireccionUsuario()
+        val Direccion = sharedpref.getDireccionUsuario()
         val Telefono = sharedpref.getTelefonoUsuario()
         val Imagen = sharedpref.getImagenUsuario()
-        val imgByteArrayFA =  Base64.getDecoder().decode(Imagen)
+        val imgByteArrayFA = Base64.getDecoder().decode(Imagen)
         val decodedImage = BitmapFactory.decodeByteArray(imgByteArrayFA, 0, imgByteArrayFA.size)
         val Id = sharedpref.getIdUsuario()
         Idglobal = Id
@@ -78,7 +78,21 @@ class CustomerProfileFragment : Fragment() {
         txtContraseñaClienteEdit.setText(Password)
         imgUserProfileCliente.setImageBitmap(decodedImage)
 
+        this.btnImgClienteEdit.setOnClickListener()
+        {
+            //check runtime permission
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
 
+
+                    //permission already granted
+                    pickImageFromGallery();
+
+            }
+            else{
+                //system OS is < Marshmallow
+                pickImageFromGallery();
+            }
+        }
         //Boton que manda a llamar la funcion para modificar los datos del usuario
         this.btnSubmitClienteEdit.setOnClickListener {
             ModificarUsuario()
@@ -153,14 +167,14 @@ class CustomerProfileFragment : Fragment() {
     private fun pickImageFromGallery() {
         //Intent to pick image
         val intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/PNG"
-        startActivityForResult(intent, CustomerProfileFragment.IMAGE_PICK_CODE)
+        intent.type = "image/JPEG"
+        startActivityForResult(intent, IMAGE_PICK_CODE)
     }
 
     //handle requested permission result
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         when(requestCode){
-            CustomerProfileFragment.PERMISSION_CODE -> {
+            PERMISSION_CODE -> {
                 if (grantResults.size >0 && grantResults[0] ==
                     PackageManager.PERMISSION_GRANTED){
                     //permission from popup granted
@@ -177,10 +191,10 @@ class CustomerProfileFragment : Fragment() {
     //handle result of picked image
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (resultCode == Activity.RESULT_OK && requestCode == CustomerProfileFragment.IMAGE_PICK_CODE){
-            imgProfileCliente.setImageURI(data?.data)
+        if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE){
+            imgUserProfileCliente.setImageURI(data?.data)
 
-            val bitmap = (this.imgProfileCliente.drawable as BitmapDrawable).bitmap
+            val bitmap = (this.imgUserProfileCliente.drawable as BitmapDrawable).bitmap
             val stream = ByteArrayOutputStream()
             bitmap.compress(Bitmap.CompressFormat.JPEG,90,stream)
 
