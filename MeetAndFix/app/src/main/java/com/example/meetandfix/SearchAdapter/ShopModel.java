@@ -1,5 +1,7 @@
 package com.example.meetandfix.SearchAdapter;
 
+import android.graphics.Bitmap;
+
 public class ShopModel {
     private int Id;
     private String Nombre;

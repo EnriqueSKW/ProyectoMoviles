@@ -134,7 +134,7 @@ class LoginActivity : AppCompatActivity() {
                     sharedpref.SetTipoUsuario(arreglo.get("TipoUsuario").toString());
                     sharedpref.setDireccionUsuario(arreglo.get("Direccion").toString());
                     sharedpref.setTelefonoUsuario(arreglo.get("Telefono").toString());
-
+                    sharedpref.setImagenUsuario(arreglo.get("Imagen").toString());
                     var resultado2 = "Bienvenido " + sharedpref.getNombreUsuario()
 
                     Toast.makeText(applicationContext, resultado2, Toast.LENGTH_SHORT).show()
