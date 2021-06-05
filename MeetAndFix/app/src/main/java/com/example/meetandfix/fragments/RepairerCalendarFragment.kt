@@ -15,10 +15,13 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.meetandfix.ConexionesURL
 import com.example.meetandfix.R
+import com.example.meetandfix.SQLite.DataBaseHandler
 import com.example.meetandfix.SearchAdapter.ShopAdapter
+import com.example.meetandfix.UserModel.UserModel
 import com.example.meetandfix.fragments.CitasAdapter.CitaAdapter
 import com.example.meetandfix.fragments.CitasAdapter.CitaModel
 import com.example.meetandfix.shared
+import kotlinx.android.synthetic.main.login_layout.*
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -63,8 +66,9 @@ class RepairerCalendarFragment : Fragment(), CitaAdapter.ClickListener  {
 
                 val arreglo = JSONArray(response);
                 val Primero = arreglo.getJSONObject(0);
-
-
+                var helper = DataBaseHandler(this.requireContext())
+                helper.deletetable()
+                helper.createtable()
                 // Validamos que exista registro de un campo y si es nulo entonces la consulta no trajo nada
                 // y mostramos un mensaje de error
                 if (Primero.isNull("IdReparador"))
@@ -74,6 +78,7 @@ class RepairerCalendarFragment : Fragment(), CitaAdapter.ClickListener  {
                 else {
                     for (i in 0 until arreglo.length()) {
                         val jo: JSONObject = arreglo.getJSONObject(i)
+                        helper.InsertData(CitaModel(jo.get("IdReparador").toString(),jo.get("IdCliente").toString(),jo.get("Fecha").toString(),jo.get("NombreCliente").toString(),jo.get("Estado").toString()))
                         List.add(CitaModel(jo.get("IdReparador").toString(),jo.get("IdCliente").toString(),jo.get("Fecha").toString(),jo.get("NombreCliente").toString(),jo.get("Estado").toString()))
                     }
                     //Guardamos todos los datos en la clase de shared para tener las varibles de forma global
@@ -86,6 +91,22 @@ class RepairerCalendarFragment : Fragment(), CitaAdapter.ClickListener  {
             }
             //Toast.makeText(applicationContext, response.toString() , Toast.LENGTH_SHORT).show()
         }, Response.ErrorListener { VolleyError ->
+
+            val context= this
+            var helper = DataBaseHandler(this.requireContext())
+            var db = helper.readableDatabase
+            var ra = db.rawQuery("Select * from Cita",null)
+            val List:MutableList<CitaModel> = ArrayList()
+
+            if(ra.moveToFirst())
+            {
+                do{
+                    List.add(CitaModel(ra.getString(1),ra.getString(0),ra.getString(3),ra.getString(2),ra.getString(4)))
+                }while(ra.moveToNext())
+
+                val recycler= view?.findViewById<RecyclerView>(R.id.Repairer_CitasAgendadasRecyclerID)
+                recycler?.adapter = CitaAdapter(List,this)
+            }
             Toast.makeText(this.context, VolleyError.toString(), Toast.LENGTH_LONG ).show()
         }){
             val sharedpref = object : shared(context){}
