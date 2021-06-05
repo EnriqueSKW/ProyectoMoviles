@@ -19,6 +19,7 @@ import com.example.meetandfix.ReviewAdapter.ReviewAdapter
 import com.example.meetandfix.ReviewAdapter.ReviewModel
 import com.example.meetandfix.fragments.CitasAdapter.CitaAdapter
 import com.example.meetandfix.fragments.CitasAdapter.CitaModel
+import com.example.meetandfix.shared
 import kotlinx.android.synthetic.main.fragment_customer_reviews.*
 import org.json.JSONArray
 import org.json.JSONObject
@@ -83,12 +84,13 @@ class CustomerCalendarFragment : Fragment(), CitaAdapter.ClickListener {
         }, Response.ErrorListener { VolleyError ->
             Toast.makeText(this.context, VolleyError.toString(), Toast.LENGTH_LONG ).show()
         }){
+            val sharedpref = object : shared(context){}
             @Throws(AuthFailureError::class)
 
             override fun getParams(): MutableMap<String, String> {
                 val params = HashMap<String, String>()
                 params.put("funcion", "funcioncitascliente")
-                params.put("idcliente", "2")
+                params.put("idcliente", sharedpref.getIdUsuario())
                 return params
             }
 
