@@ -71,7 +71,9 @@ class CustomerWriteReviewFragment : Fragment() {
             val request = object : StringRequest(Request.Method.POST, url2, Response.Listener<String> { response ->
 
                 Toast.makeText(this.context,"Reseña mandada", Toast.LENGTH_SHORT).show()
+
                 txtEscribirReseñaCliente.setText("");
+                CustomerReviewsFragment();
             }, Response.ErrorListener { VolleyError ->
                 Toast.makeText(this.context, VolleyError.toString(), Toast.LENGTH_LONG ).show()
             }){

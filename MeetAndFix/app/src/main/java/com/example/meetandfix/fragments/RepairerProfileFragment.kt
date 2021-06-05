@@ -88,7 +88,7 @@ class RepairerProfileFragment : Fragment() {
         }
         //Boton que manda a llamar la funcion para modificar los datos del usuario
         this.btnSubmitReparadorEdit.setOnClickListener {
-            //ModificarUsuario()
+            ModificarUsuario()
         }
     }
 
@@ -162,7 +162,7 @@ class RepairerProfileFragment : Fragment() {
             val queue = Volley.newRequestQueue(this.context)
             val url = ConexionesURL.ConexionUsuario
             val request = object : StringRequest(Request.Method.POST, url, Response.Listener<String> { response ->
-                Toast.makeText(this.context, "Se registro Correctamente" , Toast.LENGTH_SHORT).show()
+                Toast.makeText(this.context, "Se modifico Correctamente" , Toast.LENGTH_SHORT).show()
 
 
             }, Response.ErrorListener { VolleyError ->
