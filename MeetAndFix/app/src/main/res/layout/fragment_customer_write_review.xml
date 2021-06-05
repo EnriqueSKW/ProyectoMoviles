@@ -79,37 +79,6 @@
                 android:autofillHints=""
                 android:paddingStart="12dp" />
 
-            <TextView
-                android:id="@+id/lblPonerCalificación"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="@string/tu_calificaci_n"
-                android:textColor="@color/colorGray"
-                android:textSize="18sp" />
-
-            <RatingBar
-                android:id="@+id/ratingBarEscribirCliente"
-                android:layout_width="245dp"
-                android:layout_height="44dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:isIndicator="true"
-                android:numStars="5"
-                android:rating="1"
-                android:scaleX=".9"
-                android:scaleY=".9"
-                android:stepSize="1"
-                android:theme="@style/RatingBar"
-                android:transformPivotX="0dp"
-                android:transformPivotY="0dp" />
-
 
             <Button
                 android:id="@+id/btnPublicarReseñaCliente"

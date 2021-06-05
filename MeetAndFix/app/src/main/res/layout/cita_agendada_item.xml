@@ -18,43 +18,66 @@
         app:cardCornerRadius="10dp">
 
 
-        <TextView
-            android:id="@+id/CitaAgendadaID"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/colorPrimary"
-            android:fontFamily="sans-serif-medium"
-            android:padding="10dp"
-            android:text="Cita Agendada"
-            android:textColor="@color/colorWhite"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/Card_Nombre_CitaID"
-            android:layout_width="match_parent"
-
-            android:layout_height="101dp"
-            android:layout_marginTop="40dp"
-            android:background="@color/colorWhite"
-            android:fontFamily="sans-serif-medium"
-            android:padding="10dp"
-            android:text="@string/nombre_cita"
-            android:textColor="@color/colorBlack"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/Card_Fecha_CitaID"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="140dp"
-            android:background="@color/colorWhite"
-            android:fontFamily="sans-serif-medium"
-            android:padding="10dp"
-            android:text="@string/card_fecha"
-            android:textColor="@color/colorGray"
-            android:textSize="12sp" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/CitaAgendadaID"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/colorPrimary"
+                android:fontFamily="sans-serif-medium"
+                android:padding="10dp"
+                android:text="Cita Agendada"
+                android:textColor="@color/colorWhite"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/Card_Nombre_CitaID"
+                android:layout_width="match_parent"
+
+                android:layout_height="101dp"
+                android:layout_marginTop="0dp"
+                android:background="@color/colorWhite"
+                android:fontFamily="sans-serif-medium"
+                android:padding="10dp"
+                android:text="@string/nombre_cita"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/CardStatusCitaID"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="#FFFFFF"
+                android:text="Status"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/CardTextIdClienteCitaID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:text="IdCliente"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/Card_Fecha_CitaID"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp"
+                android:background="@color/colorWhite"
+                android:fontFamily="sans-serif-medium"
+                android:padding="10dp"
+                android:text="@string/card_fecha"
+                android:textColor="@color/colorGray"
+                android:textSize="12sp" />
+
+        </LinearLayout>
 
 
     </androidx.cardview.widget.CardView>

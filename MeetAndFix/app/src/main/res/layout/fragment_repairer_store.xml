@@ -133,27 +133,6 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="20sp" />
 
-                <com.google.android.gms.maps.MapView
-                    android:id="@+id/mapDireccionNegocioReparador"
-                    android:layout_width="match_parent"
-                    android:layout_height="110dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp" />
-
-                <TextView
-                    android:id="@+id/lblGaleriaReparador"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="@string/galer_a"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="24sp" />
-
                 <HorizontalScrollView
                     android:id="@+id/horizontalscrollGaleriaReparador"
                     android:layout_width="match_parent"
@@ -190,27 +169,6 @@
                     android:text="@string/ver_rese_as"
                     android:textSize="18sp" />
 
-                <Button
-                    android:id="@+id/btnEditarNegocioReparador"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/custom_round_button"
-                    android:drawableStart="@drawable/ic_white_pencil"
-                    android:drawableLeft="@drawable/ic_white_pencil"
-                    android:drawablePadding="5dp"
-                    android:paddingStart="20dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="0dp"
-                    android:paddingEnd="0dp"
-                    android:text="Editar"
-                    android:textSize="18sp"
-                    />
             </LinearLayout>
 
 

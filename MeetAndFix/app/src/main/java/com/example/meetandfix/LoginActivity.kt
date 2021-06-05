@@ -98,7 +98,14 @@ class LoginActivity : AppCompatActivity() {
         startActivity(intent)
 
     }
+    private fun callRepairerNavigationActivity(){
 
+
+        val intent =  Intent(this, RepairerMainNavigationActivity::class.java)
+
+        startActivity(intent)
+
+    }
 
 
     fun LogInUsuario(){
@@ -139,7 +146,10 @@ class LoginActivity : AppCompatActivity() {
 
                     Toast.makeText(applicationContext, resultado2, Toast.LENGTH_SHORT).show()
                     // mandamos a llamar el main activity de la app despues de guardar los datos
+                    if(arreglo.get("TipoUsuario").toString()=="1")
                     this.callNavigationActivity()
+                    else
+                    this.callRepairerNavigationActivity()
                 }
             }
             else

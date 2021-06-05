@@ -37,9 +37,6 @@ class RepairerStoreFragment : Fragment() {
         }
 
         //ir al fragmento de editar información del negocio
-        this.btnEditarNegocioReparador.setOnClickListener {
-            nextFragment(repairerEditStoreFragment)
-        }
 
 
     }

@@ -81,7 +81,6 @@ class CustomerStoreFragment : Fragment() {
             nextFragment(customerChatFragment)
         }
 
-
     }
 
     companion object {

@@ -6,12 +6,14 @@ public class CitaModel {
     private String IdCliente;
     private String Fecha;
     private String NombreCliente;
+    private String Status;
 
-    public CitaModel(String idReparador, String idCliente, String fecha, String nombreCliente) {
+    public CitaModel(String idReparador, String idCliente, String fecha, String nombreCliente, String status) {
         IdReparador = idReparador;
         IdCliente = idCliente;
         Fecha = fecha;
         NombreCliente = nombreCliente;
+        Status = status;
     }
 
     public String getIdReparador() {
@@ -46,6 +48,14 @@ public class CitaModel {
         NombreCliente = nombreCliente;
     }
 
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        Status = status;
+    }
+
     @Override
     public String toString() {
         return "CitaModel{" +
@@ -53,6 +63,7 @@ public class CitaModel {
                 ", IdCliente='" + IdCliente + '\'' +
                 ", Fecha='" + Fecha + '\'' +
                 ", NombreCliente='" + NombreCliente + '\'' +
+                ", Status='" + Status + '\'' +
                 '}';
     }
 }

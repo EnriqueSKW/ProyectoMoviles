@@ -12,6 +12,7 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.meetandfix.R
+import com.example.meetandfix.fragments.CitasAdapter.CitaAdapter
 import java.util.*
 import java.util.Base64.getDecoder
 
@@ -47,7 +48,7 @@ class ShopAdapter(val shops: List<ShopModel>, private var clickListener: ClickLi
         return ShopAdapter.ViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ShopAdapter.ViewHolder, position: Int) {
         val shop=shops[position]
         holder.bind(shop)
         holder.itemView.setOnClickListener{

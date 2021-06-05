@@ -15,14 +15,17 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.meetandfix.ConexionesURL
 import com.example.meetandfix.R
+import com.example.meetandfix.SearchAdapter.ShopAdapter
 import com.example.meetandfix.fragments.CitasAdapter.CitaAdapter
 import com.example.meetandfix.fragments.CitasAdapter.CitaModel
 import org.json.JSONArray
 import org.json.JSONObject
 
 
-class RepairerCalendarFragment : Fragment() {
+class RepairerCalendarFragment : Fragment(), CitaAdapter.ClickListener  {
 
+    private val infoCitaFragment = ChatFragment()
+    var bundle = Bundle()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,11 +73,11 @@ class RepairerCalendarFragment : Fragment() {
                 else {
                     for (i in 0 until arreglo.length()) {
                         val jo: JSONObject = arreglo.getJSONObject(i)
-                        List.add(CitaModel(jo.get("IdReparador").toString(),jo.get("IdCliente").toString(),jo.get("Fecha").toString(),jo.get("NombreCliente").toString()))
+                        List.add(CitaModel(jo.get("IdReparador").toString(),jo.get("IdCliente").toString(),jo.get("Fecha").toString(),jo.get("NombreCliente").toString(),jo.get("Estado").toString()))
                     }
                     //Guardamos todos los datos en la clase de shared para tener las varibles de forma global
                     val recycler= view?.findViewById<RecyclerView>(R.id.Repairer_CitasAgendadasRecyclerID)
-                    recycler?.adapter = CitaAdapter(List)
+                    recycler?.adapter = CitaAdapter(List,this)
                     //sharedpref.setNombreUsuario(arreglo.get("Nombre").toString());
 
                 }
@@ -89,7 +92,7 @@ class RepairerCalendarFragment : Fragment() {
             override fun getParams(): MutableMap<String, String> {
                 val params = HashMap<String, String>()
                 params.put("funcion", "funcioncitasreparador")
-                params.put("idreparador", "2")
+                params.put("idreparador", "1")
                 return params
             }
 
@@ -107,5 +110,19 @@ class RepairerCalendarFragment : Fragment() {
                    
                 }
             }
+    }
+    private fun nextFragment(fragment: Fragment) =
+        activity?.supportFragmentManager?.beginTransaction()?.apply {
+            replace(R.id.fl_wrapper_repairer, fragment)
+            val commit = commit()
+        }
+
+    override fun ClickedItem(cita: CitaModel) {
+        bundle.putString("idcliente", cita.idCliente);
+        bundle.putString("nombrecliente", cita.nombreCliente);
+        bundle.putString("fecha",cita.fecha);
+
+        infoCitaFragment.arguments=bundle;
+        nextFragment(infoCitaFragment)
     }
 }

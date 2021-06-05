@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_customer_reviews.*
 import org.json.JSONArray
 import org.json.JSONObject
 
-class CustomerCalendarFragment : Fragment() {
+class CustomerCalendarFragment : Fragment(), CitaAdapter.ClickListener {
 
 
 
@@ -69,11 +69,11 @@ class CustomerCalendarFragment : Fragment() {
                 else {
                     for (i in 0 until arreglo.length()) {
                         val jo: JSONObject = arreglo.getJSONObject(i)
-                        List.add(CitaModel(jo.get("IdReparador").toString(),jo.get("IdCliente").toString(),jo.get("Fecha").toString(),jo.get("NombreCliente").toString()))
+                        List.add(CitaModel(jo.get("IdReparador").toString(),jo.get("IdCliente").toString(),jo.get("Fecha").toString(),jo.get("NombreCliente").toString(),jo.get("Estado").toString()))
                     }
                     //Guardamos todos los datos en la clase de shared para tener las varibles de forma global
                     val recycler= view?.findViewById<RecyclerView>(R.id.Recycler_CitasAgendadasID)
-                    recycler?.adapter = CitaAdapter(List)
+                    recycler?.adapter = CitaAdapter(List,this)
                     //sharedpref.setNombreUsuario(arreglo.get("Nombre").toString());
 
                 }
@@ -104,5 +104,9 @@ class CustomerCalendarFragment : Fragment() {
                 arguments = Bundle().apply {
                 }
             }
+    }
+
+    override fun ClickedItem(cita: CitaModel) {
+
     }
 }
