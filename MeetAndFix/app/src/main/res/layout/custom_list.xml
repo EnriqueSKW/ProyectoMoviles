@@ -24,8 +24,9 @@
             <ImageView
                 android:id="@+id/Image_RepairerShopID"
                 android:layout_width="239dp"
-                android:layout_height="match_parent"
+                android:layout_height="100dp"
                 android:layout_weight="1"
+                android:scaleType="centerInside"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <LinearLayout

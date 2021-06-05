@@ -112,7 +112,7 @@ class CustomerSearchFragment : Fragment(),ShopAdapter.ClickListener {
                         val jo: JSONObject = arreglo.getJSONObject(i)
                         if(jo.isNull("Imagen"))
                         {
-                            List.add(ShopModel(jo.getInt("Id").toInt(),jo.get("NombreNegocio").toString(),jo.get("Direccion").toString(),null))
+                            List.add(ShopModel(jo.getInt("Id").toInt(),jo.get("NombreNegocio").toString(),jo.get("Direccion").toString(),jo.get("Imagen").toString()))
                         }
                         else
                         {
