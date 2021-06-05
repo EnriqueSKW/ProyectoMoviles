@@ -1,12 +1,17 @@
 package com.example.meetandfix.fragments
 
+import android.graphics.BitmapFactory
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import com.example.meetandfix.R
+import com.example.meetandfix.shared
 import kotlinx.android.synthetic.main.fragment_repairer_store.*
+import java.util.*
 
 
 class RepairerStoreFragment : Fragment() {
@@ -28,9 +33,19 @@ class RepairerStoreFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_repairer_store, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        val sharedpref = object : shared(this.context){}
+        val Imagen = sharedpref.getImagenUsuario()
+        val imgByteArrayFA = Base64.getDecoder().decode(Imagen)
+        val decodedImage = BitmapFactory.decodeByteArray(imgByteArrayFA, 0, imgByteArrayFA.size)
+        lblNegocioNombreReparador.setText(sharedpref.getNombreNegocio())
+        lblDireccionRealReparador.setText(sharedpref.getDireccionUsuario())
+        lblCorreoRealReparadorStore.setText(sharedpref.getCorreoUsuario())
+        lblTelefonoRealStoreReparador.setText(sharedpref.getTelefonoUsuario())
+        imgNegocioMainImageReparador.setImageBitmap(decodedImage);
         //ir al fragmento de reseñas
         this.btnVerResñasReparador.setOnClickListener {
             nextFragment(repairerReviewsFragment)

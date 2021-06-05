@@ -18,6 +18,7 @@ import com.example.meetandfix.R
 import com.example.meetandfix.ReviewAdapter.ReviewAdapter
 import com.example.meetandfix.ReviewAdapter.ReviewModel
 import com.example.meetandfix.UserModel.UserModel
+import com.example.meetandfix.shared
 import kotlinx.android.synthetic.main.fragment_customer_reviews.*
 import org.json.JSONArray
 import org.json.JSONObject
@@ -93,12 +94,13 @@ class RepairerReviewsFragment : Fragment() {
         }, Response.ErrorListener { VolleyError ->
             Toast.makeText(this.context, VolleyError.toString(), Toast.LENGTH_LONG ).show()
         }){
+            val sharedpref = object : shared(context){}
             @Throws(AuthFailureError::class)
 
             override fun getParams(): MutableMap<String, String> {
                 val params = HashMap<String, String>()
                 params.put("funcion", "funcionobtenerreseñas")
-                params.put("idreparador", "1")
+                params.put("idreparador", sharedpref.getIdUsuario())
                 return params
             }
 

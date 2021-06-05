@@ -83,19 +83,6 @@
                         android:textColor="@color/colorBlack"
                         android:textSize="24sp" />
 
-                    <RatingBar
-                        android:id="@+id/ratingBarNegocioReparador"
-                        android:layout_width="250dp"
-                        android:layout_height="44dp"
-                        android:isIndicator="true"
-                        android:numStars="5"
-                        android:rating="1"
-                        android:scaleX=".7"
-                        android:scaleY=".7"
-                        android:stepSize="1"
-                        android:theme="@style/RatingBar"
-                        android:transformPivotX="0dp"
-                        android:transformPivotY="0dp" />
                 </LinearLayout>
 
 
@@ -103,7 +90,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="395dp"
+                android:layout_height="264dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -133,12 +120,49 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="20sp" />
 
-                <HorizontalScrollView
-                    android:id="@+id/horizontalscrollGaleriaReparador"
+                <TextView
+                    android:id="@+id/lblTelefonoStoreId"
                     android:layout_width="match_parent"
-                    android:layout_height="151dp">
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="5dp"
+                    android:text="Telefono"
+                    android:textColor="#000000"
+                    android:textSize="24sp" />
 
-                </HorizontalScrollView>
+                <TextView
+                    android:id="@+id/lblTelefonoRealStoreReparador"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10sp"
+                    android:paddingTop="10sp"
+                    android:paddingRight="5sp"
+                    android:text="TextView"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/lblCorreoStoreReparador"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10sp"
+                    android:paddingTop="10sp"
+                    android:paddingRight="5sp"
+                    android:text="Correo"
+                    android:textColor="#000000"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/lblCorreoRealReparadorStore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10sp"
+                    android:paddingTop="10sp"
+                    android:paddingRight="5sp"
+                    android:text="TextView"
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
 
 
             </LinearLayout>
